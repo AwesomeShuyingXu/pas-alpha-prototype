@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+{% block pageTitle %}
+  Help and support - Prior Approvals System - NHS
+{% endblock %}
+{% block beforeContent %}
+  {# Breadcrumb setup:
+     - "Home" links to the root.
+     - "Prior Approvals System" links to a placeholder system homepage.
+     - "Help and support" is the current page, rendered as non-linked text. #}
+  {{ breadcrumb({
+    items: [
+      {
+        href: "/",
+        text: "Home"
+      },
+      {
+        href: "/prior-approvals-home",
+        text: "Prior Approvals System"
+      }
+    ],
+    text: "Help and support"
+  }) }}
+{% endblock %}
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+        Prior Approvals System: Help and support
+      </h1>
+      <p class="nhsuk-body">
+        Find help and guidance on using the Prior Approvals System to request permissions for high-cost drugs.
+      </p>
+      <p class="nhsuk-body">
+        You can search for help, browse topics below, or find out how to contact us if you need more support.
+      </p>
+      {# Stage 2: Search Bar #}
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="search-help">
+          Search help topics
+        </label>
+        <div class="nhsuk-hint" id="search-help-hint">
+          For example, 'submit request' or 'check status'
+        </div>
+        <input class="nhsuk-input nhsuk-input--width-20" id="search-help" name="search-help" type="search" aria-describedby="search-help-hint">
+      </div>
+      <button class="nhsuk-button" type="submit">
+        Search
+      </button>
+      <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+      {# Stage 2: Navigation to Key Help Categories #}
+      <h2 class="nhsuk-heading-l">Browse help topics</h2>
+      <ul class="nhsuk-list">
+        <li>
+          {{ actionLink({
+            "text": "Getting started with the Prior Approvals System",
+            "href": "#getting-started"
+          }) }}
+        </li>
+        <li>
+          {{ actionLink({
+            "text": "How to submit a prior approval request",
+            "href": "#submitting-request"
+          }) }}
+        </li>
+        <li>
+          {{ actionLink({
+            "text": "Checking the status of your request",
+            "href": "#checking-status"
+          }) }}
+        </li>
+        <li>
+          {{ actionLink({
+            "text": "Troubleshooting common issues",
+            "href": "#troubleshooting"
+          }) }}
+        </li>
+      </ul>
+      <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+      {# Stage 3: Detailing Help Categories #}
+      {# Example: Getting Started #}
+      <section id="getting-started" aria-labelledby="getting-started-heading">
+        <h2 class="nhsuk-heading-l" id="getting-started-heading">Getting started with the Prior Approvals System</h2>
+        <p class="nhsuk-body">Information about accessing the system for the first time, what it's used for, and any account setup requirements.</p>
+        {{ details({
+          "text": "What is the Prior Approvals System?",
+          "HTML": "<p class='nhsuk-body'>The Prior Approvals System is used by healthcare professionals to request authorisation before prescribing certain high-cost drugs. This ensures appropriate use and helps manage budgets.</p>"
+        }) }}
+        {{ details({
+          "text": "Do I need an account to use the system?",
+          "HTML": "<p class='nhsuk-body'>Yes, you will need to register for an account. [Link to registration page or instructions].</p><p class='nhsuk-body'>You will need your [placeholder for required ID, e.g., GMC number] to register.</p>"
+        }) }}
+      </section>
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+      {# Example: Submitting a Request (More detailed as per Stage 3 prompt) #}
+      <section id="submitting-request" aria-labelledby="submitting-request-heading">
+        <h2 class="nhsuk-heading-l" id="submitting-request-heading">How to submit a prior approval request</h2>
+        <p class="nhsuk-body">Guidance on completing and submitting a new request for prior approval.</p>
+        {{ details({
+          "text": "What information do I need before submitting?",
+          "HTML": [
+            "<p class='nhsuk-body'>Before you start, ensure you have the following information available:</p>",
+            "<ul class='nhsuk-list nhsuk-list--bullet'>",
+            "  <li>Patient NHS Number</li>",
+            "  <li>Proposed drug name and dosage</li>",
+            "  <li>Clinical indication for the drug</li>",
+            "  <li>Supporting clinical evidence (if applicable)</li>",
+            "  <li>Details of previously trialled treatments</li>",
+            "</ul>",
+            "{{ insetText({",
+            "  \"HTML\": \"<p>Having all information ready will speed up the submission process.</p>\"",
+            "}) }}"
+          ] | join | safe
+        }) }}
+        {{ details({
+          "text": "How do I fill out the PA01 form?",
+          "HTML": [
+            "<p class='nhsuk-body'>The PA01 form is the standard form for most prior approval requests. Follow these steps:</p>",
+            "<ol class='nhsuk-list nhsuk-list--number'>",
+            "  <li>Navigate to 'New Request' from the main dashboard.</li>",
+            "  <li>Select 'PA01 Form' from the options.</li>",
+            "  <li>Complete all mandatory fields, marked with an asterisk (*).</li>",
+            "  <li>Provide clear and concise clinical justifications in the relevant sections.</li>",
+            "  <li>Attach any supporting documents using the 'Upload File' button. Accepted file types are PDF, DOCX, JPG. Maximum file size is 5MB.</li>",
+            "  <li>Review your application carefully before submitting.</li>",
+            "</ol>"
+          ] | join | safe
+        }) }}
+        {{ details({
+          "text": "Can I save a draft request?",
+          "HTML": "<p class='nhsuk-body'>Yes, you can save your request as a draft at any point by clicking the 'Save as Draft' button at the bottom of the form. You can find your saved drafts under 'My Draft Requests' on your dashboard.</p>"
+        }) }}
+      </section>
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+      {# Example: Checking Status #}
+      <section id="checking-status" aria-labelledby="checking-status-heading">
+        <h2 class="nhsuk-heading-l" id="checking-status-heading">Checking the status of your request</h2>
+        <p class="nhsuk-body">Find out how to track your submitted requests and understand what different statuses mean.</p>
+        {{ details({
+          "text": "Where can I see the status of my requests?",
+          "HTML": "<p class='nhsuk-body'>You can view the status of all your submitted requests on your main dashboard under the 'My Submitted Requests' section. Each request will show its current status, such as 'Submitted', 'Under Review', 'Approved', 'Rejected', or 'Query'.</p>"
+        }) }}
+        {{ details({
+          "text": "What do the different statuses mean?",
+          "HTML": [
+            "<ul class='nhsuk-list'>",
+            "  <li><strong>Submitted:</strong> Your request has been successfully received by the system.</li>",
+            "  <li><strong>Under Review:</strong> Your request is being assessed by the approvals team.</li>",
+            "  <li><strong>Approved:</strong> Your request has been approved. You can proceed with prescribing.</li>",
+            "  <li><strong>Rejected:</strong> Your request has not been approved. Reasons will be provided.</li>",
+            "  <li><strong>Query:</strong> The approvals team requires more information. Check your notifications for details.</li>",
+            "</ul>"
+          ] | join | safe
+        }) }}
+      </section>
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+      {# Example: Troubleshooting #}
+      <section id="troubleshooting" aria-labelledby="troubleshooting-heading">
+        <h2 class="nhsuk-heading-l" id="troubleshooting-heading">Troubleshooting common issues</h2>
+        <p class="nhsuk-body">Solutions to common problems you might encounter while using the system.</p>
+        {{ details({
+          "text": "I'm getting an error message when I try to submit.",
+          "HTML": "<p class='nhsuk-body'>Please check that all mandatory fields are completed. If you are still experiencing issues, note down the error message and contact support.</p>"
+        }) }}
+        {{ details({
+          "text": "I can't upload my supporting document.",
+          "HTML": "<p class='nhsuk-body'>Ensure your file is one of the accepted types (PDF, DOCX, JPG) and is under the 5MB size limit. If problems persist, try using a different browser or contact support.</p>"
+        }) }}
+      </section>
+      <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+      {# Stage 4: Further Help / Contact Information #}
+      <section id="contact-support" aria-labelledby="contact-support-heading">
+        <h2 class="nhsuk-heading-l" id="contact-support-heading">Still need help?</h2>
+        <p class="nhsuk-body">If you cannot find the answer to your question on this page, you can contact the Prior Approvals System support team.</p>
+      </section>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  NHS England Prior Approval Forms
+{% endblock %}
+
+{% block content %}
+  <h1 class="nhsuk-heading-xl">Prior Approval Forms</h1>
+
+  <form method="get" class="nhsuk-form-group">
+    <div class="nhsuk-grid-row">
+      <div class="nhsuk-grid-column-one-quarter">
+        <label class="nhsuk-label" for="drug">Drug</label>
+        <select class="nhsuk-select" id="drug" name="drug">
+          <option value="">Please select a drug</option>
+        </select>
+      </div>
+
+      <div class="nhsuk-grid-column-one-quarter">
+        <label class="nhsuk-label" for="diagnosis">Diagnosis</label>
+        <select class="nhsuk-select" id="diagnosis" name="diagnosis">
+          <option value="">Please select a diagnosis</option>
+        </select>
+      </div>
+
+      <div class="nhsuk-grid-column-one-quarter">
+        <label class="nhsuk-label" for="grouping">Grouping</label>
+        <select class="nhsuk-select" id="grouping" name="grouping">
+          <option value="">Please select a grouping</option>
+        </select>
+      </div>
+
+      <div class="nhsuk-grid-column-one-quarter">
+        <label class="nhsuk-label" for="freeText">Free Text</label>
+        <input class="nhsuk-input" id="freeText" name="freeText" type="text">
+      </div>
+    </div>
+
+    <div class="nhsuk-checkboxes nhsuk-u-margin-top-3">
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="showEnabled" name="showEnabled" type="checkbox">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="showEnabled">
+          Show enabled forms only
+        </label>
+      </div>
+    </div>
+
+    <button class="nhsuk-button nhsuk-u-margin-top-3" type="submit">
+      Filter
+    </button>
+    <a href="/" class="nhsuk-link nhsuk-u-margin-left-3">Clear Criteria</a>
+  </form>
+
+  <table class="nhsuk-table nhsuk-u-margin-top-6">
+    <caption class="nhsuk-table__caption">Forms List</caption>
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th scope="col" class="nhsuk-table__header">Date Created</th>
+        <th scope="col" class="nhsuk-table__header">Date Modified</th>
+        <th scope="col" class="nhsuk-table__header">Form Description</th>
+        <th scope="col" class="nhsuk-table__header">Auto Approval</th>
+        <th scope="col" class="nhsuk-table__header">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">19/06/2017</td>
+        <td class="nhsuk-table__cell">19/06/2017</td>
+        <td class="nhsuk-table__cell">NHS England – Initial Funding Application – Sofosbuvir for paediatric Hepatitis C</td>
+        <td class="nhsuk-table__cell">On</td>
+        <td class="nhsuk-table__cell">
+          <a href="#" class="nhsuk-link">Edit</a> / 
+          <a href="#" class="nhsuk-link">Copy</a> / 
+          <a href="#" class="nhsuk-link">Delete</a> / 
+          <a href="#" class="nhsuk-link">View Form</a> / 
+          <a href="#" class="nhsuk-link">Edit Questions</a>
+        </td>
+      </tr>
+      <!-- Repeat rows for each form -->
+    </tbody>
+  </table>
+{% endblock %}
