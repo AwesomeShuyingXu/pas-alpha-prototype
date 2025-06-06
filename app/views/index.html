@@ -40,13 +40,6 @@
       <h1 class="nhsuk-heading-xl">
         {{ serviceName }}
       </h1>
-
-      <p>Set the service name for your prototype by editing <strong>/app/config.js</strong>.</p>
-
-      <p>
-        This is the index page for your prototype. You can find it at <strong>/app/views/index.html</strong>.
-      </p>
-
       <hr>
 
       <h2 class="nhsuk-heading-l">
@@ -69,4 +62,26 @@
 
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+import accessibleAutocomplete from 'accessible-autocomplete'
+
+const drugs = [
+  "Abatacept", "Acalabrutinib", "Alectinib", "Atezolizumab", // ... up to 100+
+  "Zanubrutinib"
+]
+
+accessibleAutocomplete({
+  element: document.querySelector('#drug-autocomplete-container'),
+  id: 'drug-autocomplete',
+  name: 'drug',
+  source: drugs,
+  minLength: 2,
+  autoselect: true,
+  defaultValue: '',
+  confirmOnBlur: false,
+  displayMenu: 'overlay'
+})
+
 {% endblock %}
