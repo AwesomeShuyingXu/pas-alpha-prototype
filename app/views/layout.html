@@ -20,16 +20,52 @@
 
 <!-- Edit the header -->
 <!-- Header code examples can be found at https://service-manual.nhs.uk/design-system/components/header -->
+{% from 'header/macro.njk' import header %}
+
 {% block header %}
-  {{ header({
-    "service": {
-        "name": serviceName,
-        "href": "/"
+
+{{ header({
+  service: {
+    name: "Prior Approvals System"
+  },
+  showNav: "true",
+  primaryLinks: [
+      {
+        url  : "#",
+        label : "Patient"
       },
-      "showNav": "false",
-      "showSearch": "false"
-    })
-  }}
+      {
+        url : '#',
+        label : 'Notes'
+      },
+      {
+        url  : '#',
+        label : 'Request'
+      },
+      {
+        url  : '#',
+        label : 'Administration'
+      },
+      {
+        url : '#',
+        label : 'Treatment Break'
+      },
+      {
+        url : '#',
+        label : 'Invoices'
+      },
+      {
+        url : '#',
+        label : 'Options'
+      },
+      {
+        url : '#',
+        label : 'Log Out'
+      }
+    ]
+  })
+}}
+
 {% endblock %}
 
 <!-- Edit the footer -->
