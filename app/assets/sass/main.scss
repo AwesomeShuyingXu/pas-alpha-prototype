@@ -4,8 +4,16 @@
 // Components that are not in the NHS.UK frontend library
 @import 'components/list-border';
 @import 'components/related-nav';
+@import 'components/accessible-autocomplete';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below...
 ///////////////////////////////////////////
+/// 
+
+.aa-input-container {
+    input {
+        background-color: white;
+    }
+}
   
