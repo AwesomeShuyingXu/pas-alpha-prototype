@@ -1,0 +1,182 @@
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout.html' %}
+{% from "radios/macro.njk" import radios %}
+{% from "select/macro.njk" import select %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <span class="nhsuk-caption-xl">
+        Create new approval request for John Doe
+      </span>
+      <h1 class="nhsuk-heading-xl">
+        Select Form Type
+      </h1>
+      <hr>
+  <form method="post" action="/form-selector-result">
+
+    {{ radios({
+      idPrefix: "requestType",
+      name: "requestType",
+      fieldset: {
+        legend: {
+          text: "Request type",
+          classes: "nhsuk-label nhsuk-u-font-weight-bold"
+        }
+      },
+      items: [
+        {
+          value: "initial",
+          text: "Initial Request",
+          checked: true
+        },
+        {
+          value: "continuation",
+          text: "Continuation Request"
+        }
+      ]
+    }) }}
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="drug-autocomplete">
+        Start typing the name of a drug/device:
+      </label>
+      <div id="drug-autocomplete-container" class="aa-input-container"></div>
+      <input type="hidden" name="drug" id="drug-autocomplete">
+    </div>
+
+
+    {{ select({
+      id: "diagnosis",
+      name: "diagnosis",
+      label: {
+        text: "Select a diagnosis:"
+      },
+      items: [
+        {
+          value: "",
+          text: ""
+        },
+        {
+          value: "xxx",
+          text: "xxx"
+        }
+      ]
+    }) }}
+
+    <h2 class="nhsuk-heading-m">Select a form from the options below:</h2>
+
+    <table class="nhsuk-table">
+      <thead>
+        <tr>
+          <th scope="col">Commissioner</th>
+          <th scope="col">Form Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set forms = [
+          {
+            commissioner: "NHSE",
+            description: "DUR1_v1.2 NHS England – Initial Funding Application – Durvalumab for treating PD-L1 ≥1% positive locally advanced and unresectable non-small-cell lung cancer which has not progressed following concurrent platinum-based chemoradiotherapy (TA798)",
+            code: "dur1"
+          },
+          {
+            commissioner: "NHSE",
+            description: "DUR2_v1.1 NHS England – Initial Funding Application – Durvalumab in combination with gemcitabine and cisplatin for the 1st line treatment of patients with locally advanced or unresectable or recurrent or metastatic biliary tract cancer (TA944)",
+            code: "dur2"
+          },
+          {
+            commissioner: "NHSE",
+            description: "DUR3_v1.0 NHS England – Initial Funding Application – Durvalumab in combination with chemotherapy for neoadjuvant treatment and then continued as adjuvant monotherapy in adults with previously untreated UICC/AJCC 8th edition stage IIA or IIB or IIIA or N2 only IIIB non-small cell lung cancer AND who are candidates for potentially curative surgery (TA1030)",
+            code: "dur3"
+          },
+          {
+            commissioner: "NHSE",
+            description: "DUR4_v1.0 NHS England – Initial Funding Application – Durvalumab in combination with etoposide plus either carboplatin or cisplatin for the first-line treatment of adult patients with extensive-stage small cell lung cancer (TA1041)",
+            code: "dur4"
+          },
+          {
+            commissioner: "CDF",
+            description: "DUR5_ver1.0 – National Cancer Drugs Fund Application Form – Durvalumab in combination with platinum-containing chemotherapy (carboplatin and paclitaxel) for the 1st line treatment of mismatch repair deficient (dMMR) or microsatellite instability-high endometrial carcinoma in adult patients who have recurrent or primary advanced disease and who are not candidates for potentially curative surgery or radiotherapy or chemoradiotherapy but are eligible for systemic therapy (ID6317)",
+            code: "dur5"
+          }
+        ] %}
+
+        {% for form in forms %}
+        <tr>
+          <td>{{ form.commissioner }}</td>
+          <td>{{ form.description }}</td>
+          <td><a class="nhsuk-button nhsuk-button--secondary" href="/select-form/{{ form.code }}">Select form</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <p class="nhsuk-body"><a class="nhsuk-link" href="/individual-funding">For Individual Funding Requests please follow this link to the web-based portal</a></p>
+    <p class="nhsuk-body"><a class="nhsuk-link" href="/chemo-treatment-break">Chemotherapy treatment break request form</a></p>
+  </form>
+
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+    const drugList = [
+      "Abatacept", "Acalabrutinib", "Alectinib", "Atezolizumab", "Daratumumab", "Dupilumab",
+      "Dasatinib",
+      "Deferiprone (DFP) & deferasirox (DFX)",
+      "Defibrotide",
+      "Deucravacitinib",
+      "Dexamethasone",
+      "Dexrazoxane",
+      "DFO / DFX combination",
+      "Difelikefalin",
+      "Diflunisal",
+      "Dimethyl fumarate",
+      "Dinutuximab beta",
+      "Diroximel fumarate",
+      "Dolutegravir/Abacavir/Lamivudine",
+      "Dostarlimab",
+      "Dupilumab",
+      "Durvalumab", // use this one for testing
+      "Eculizumab",
+      "Elacestrant",
+      "Zanubrutinib"
+    ];
+
+    accessibleAutocomplete({
+      element: document.querySelector('#drug-autocomplete-container'),
+      id: 'drug-autocomplete',
+      name: 'drug',
+      source: drugList,
+      minLength: 2,
+      autoselect: true,
+      confirmOnBlur: false,
+      displayMenu: 'overlay'
+    });
+</script>
+
+{% endblock %}
