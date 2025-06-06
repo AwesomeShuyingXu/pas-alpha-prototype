@@ -20,15 +20,101 @@
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
       <h1 class="nhsuk-heading-xl">
-        Prior Approval requests for John Doe
+        Patient notes - Jeremy Dalston
       </h1>
-  <form method="post" action="/patients/example-id/select-request-type">
+      <h2 class="nhsuk-heading-m">Patient details</h2>
+      
+      <form method="post" action="/patients/add/details">
+        <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+          Edit patient details
+        </button>
+      </form>
 
-    <button class="nhsuk-button" type="submit">
-      New request
-    </button>
+      {{ table({
+        panel: false,
+        firstCellIsHeader: false,
+        rows: [
+          [
+            {
+              text: "NHS number"
+            },
+            {
+              text: "4857773456"
+            }
+          ],
+          [
+            {
+              text: "Initials"
+            },
+            {
+              text: "JD"
+            }
+          ],
+          [
+            {
+              text: "First name"
+            },
+            {
+              text: "Jeremy"
+            }
+          ],
+          [
+            {
+              text: "Surname"
+            },
+            {
+              text: "Dalston"
+            }
+          ],
+          [
+            {
+              text: "Date of birth"
+            },
+            {
+              text: "12/03/1987"
+            }
+          ],
+          [
+            {
+              text: "Surgery"
+            },
+            {
+              text: "12/03/1987"
+            }
+          ]
+        ]
+      }) }}
 
-  </form>
+      <h2 class="nhsuk-heading-m">Action notes</h2>
+      <form method="post" action="/patients/example-id/confirm-gp" class="inline-btn">
+        <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+          New request
+        </button>
+      </form>
+      <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
+          Upload docs
+      </button>
+      <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
+          End of treatment
+      </button>
+
+
+
+
+      {{ table({
+        panel: false,
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Date"
+          },
+          {
+            text: "Description"
+          }
+        ]
+      }) }}
+
+
 
 
 

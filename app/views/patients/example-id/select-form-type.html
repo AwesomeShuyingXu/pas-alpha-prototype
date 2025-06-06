@@ -12,7 +12,7 @@
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
-  <div class="nhsuk-back-link"> <a class="nhsuk-back-link__link" href="/patients/example-id/select-request-type">
+  <div class="nhsuk-back-link"> <a class="nhsuk-back-link__link" href="select-request-type">
       <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
         <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
       </svg>
@@ -30,7 +30,7 @@
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
       <span class="nhsuk-caption-xl">
-        Create new approval request for John Doe
+        Create new approval request for Jeremy Dalston
       </span>
       <h1 class="nhsuk-heading-xl">
         Select Form Type
@@ -38,27 +38,21 @@
       <hr>
   <form method="post" action="">
 
-    {{ select({
-      id: "diagnosis",
-      name: "diagnosis",
-      label: {
-        text: "Select a diagnosis:"
-      },
-      items: [
-        {
-          value: "",
-          text: ""
-        },
-        {
-          value: "xxx",
-          text: "xxx"
-        }
-      ]
-    }) }}
-
     <h2 class="nhsuk-heading-m">Select a form from the options below:</h2>
 
-    <table class="nhsuk-table">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="diagnosis">
+        Filter forms by diagnosis (optional):
+      </label>
+      <select class="nhsuk-select" id="diagnosis" name="diagnosis">
+        <option value="option-1">All</option>
+        <option value="option-2">Asthma (severe eosinophilic)</option>
+        <option value="option-3">Atopic dermatitis</option>
+        <option value="option-4">Demititis (severe atopic)</option>
+      </select>
+    </div>
+
+    <table class="nhsuk-table size-small-text">
       <thead>
         <tr>
           <th scope="col">Commissioner</th>
@@ -69,29 +63,24 @@
       <tbody>
         {% set forms = [
           {
-            commissioner: "NHSE",
-            description: "DUR1_v1.2 NHS England – Initial Funding Application – Durvalumab for treating PD-L1 ≥1% positive locally advanced and unresectable non-small-cell lung cancer which has not progressed following concurrent platinum-based chemoradiotherapy (TA798)",
-            code: "dur1"
+            commissioner: "ICB",
+            description: "NHS Kernow -Funding Application - Dupilumab for treating moderate to severe atopic dermatitis (NICE TA 534)",
+            id: "form-1"
           },
           {
             commissioner: "NHSE",
-            description: "DUR2_v1.1 NHS England – Initial Funding Application – Durvalumab in combination with gemcitabine and cisplatin for the 1st line treatment of patients with locally advanced or unresectable or recurrent or metastatic biliary tract cancer (TA944)",
-            code: "dur2"
+            description: "M4C – NHS England V1.4 – Dupilumab treatment of patients from 6 months of age and older with severe atopic dermatitis who have responded inadequately to at least one systemic therapy or where the available systemic therapies are not recommended or are not tolerated (in relation to NICE TA534)",
+            id: "form-2"
           },
           {
             commissioner: "NHSE",
-            description: "DUR3_v1.0 NHS England – Initial Funding Application – Durvalumab in combination with chemotherapy for neoadjuvant treatment and then continued as adjuvant monotherapy in adults with previously untreated UICC/AJCC 8th edition stage IIA or IIB or IIIA or N2 only IIIB non-small cell lung cancer AND who are candidates for potentially curative surgery (TA1030)",
-            code: "dur3"
+            description: "M4C – NHS England V1.5 – Initial Funding Application - Dupilumab for treating severe asthma with type 2 inflammation in children aged 6-11 years (in relation to TA751)",
+            id: "form-3"
           },
           {
             commissioner: "NHSE",
-            description: "DUR4_v1.0 NHS England – Initial Funding Application – Durvalumab in combination with etoposide plus either carboplatin or cisplatin for the first-line treatment of adult patients with extensive-stage small cell lung cancer (TA1041)",
-            code: "dur4"
-          },
-          {
-            commissioner: "CDF",
-            description: "DUR5_ver1.0 – National Cancer Drugs Fund Application Form – Durvalumab in combination with platinum-containing chemotherapy (carboplatin and paclitaxel) for the 1st line treatment of mismatch repair deficient (dMMR) or microsatellite instability-high endometrial carcinoma in adult patients who have recurrent or primary advanced disease and who are not candidates for potentially curative surgery or radiotherapy or chemoradiotherapy but are eligible for systemic therapy (ID6317)",
-            code: "dur5"
+            description: "NHS England V1.2 – Initial Funding Application - Dupilumab for treating severe asthma with type 2 inflammation in adults or adolescents aged 12 years and older (in relation to TA751)",
+            id: "form-4"
           }
         ] %}
 
@@ -99,15 +88,13 @@
         <tr>
           <td>{{ form.commissioner }}</td>
           <td>{{ form.description }}</td>
-          <td><a class="nhsuk-button nhsuk-button--secondary" href="/patients/example-id/complete-request">Select form</a></td>
+          <td><a class="nhsuk-button nhsuk-button--secondary" href="complete-request">Select form</a></td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
 
   </form>
-
-
 
     </div>
   </div>
@@ -116,40 +103,26 @@
 {% block pageScripts %}
 
 <script>
+  // Map diagnosis option values to row indices (0-based index from your forms list)
+  const diagnosisMap = {
+    'option-1': [0, 1, 2, 3], // All
+    'option-2': [2, 3],       // Asthma (severe eosinophilic)
+    'option-3': [0],       // Atopic dermatitis
+    'option-4': [1],       // Demititis (severe atopic)
+  };
 
-    const drugList = [
-      "Abatacept", "Acalabrutinib", "Alectinib", "Atezolizumab", "Daratumumab", "Dupilumab",
-      "Dasatinib",
-      "Deferiprone (DFP) & deferasirox (DFX)",
-      "Defibrotide",
-      "Deucravacitinib",
-      "Dexamethasone",
-      "Dexrazoxane",
-      "DFO / DFX combination",
-      "Difelikefalin",
-      "Diflunisal",
-      "Dimethyl fumarate",
-      "Dinutuximab beta",
-      "Diroximel fumarate",
-      "Dolutegravir/Abacavir/Lamivudine",
-      "Dostarlimab",
-      "Dupilumab",
-      "Durvalumab", // use this one for testing
-      "Eculizumab",
-      "Elacestrant",
-      "Zanubrutinib"
-    ];
+  const diagnosisSelect = document.getElementById('diagnosis');
+  const tableBody = document.querySelector('.nhsuk-table tbody');
+  const tableRows = tableBody.querySelectorAll('tr');
 
-    accessibleAutocomplete({
-      element: document.querySelector('#drug-autocomplete-container'),
-      id: 'drug-autocomplete',
-      name: 'drug',
-      source: drugList,
-      minLength: 2,
-      autoselect: true,
-      confirmOnBlur: false,
-      displayMenu: 'overlay'
+  diagnosisSelect.addEventListener('change', function () {
+    const selected = this.value;
+    const visibleIndexes = diagnosisMap[selected] || [];
+
+    tableRows.forEach((row, index) => {
+      row.style.display = visibleIndexes.includes(index) ? '' : 'none';
     });
+  });
 </script>
 
 {% endblock %}

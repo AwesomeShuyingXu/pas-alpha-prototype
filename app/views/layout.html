@@ -7,6 +7,7 @@
 <!-- Extends the prototype kit template which in turn extends the NHS.UK frontend template -->
 {% extends "prototype-kit-template.njk" %}
 
+
 {% block head %}
   <!-- Add your custom CSS or Sass in /app/assets/sass/main.scss -->
   <link href="/css/main.css" rel="stylesheet">
@@ -60,18 +61,26 @@
 <!-- Footer code examples can be found at https://service-manual.nhs.uk/design-system/components/footer -->
 {% block footer %}
   {{ footer({
-    "links": [
+    links: [
       {
-        "URL": "/",
-        "label": "Home"
+        URL: "#",
+        label: "Accessibility statement"
       },
       {
-        "URL": "/example-templates",
-        "label": "Page templates"
+        URL: "#",
+        label: "Contact us"
       },
       {
-        "URL": "/prototype-admin/reset?returnPage=" + (currentPage | urlencode),
-        "label": "Reset data"
+        URL: "#",
+        label: "Cookies"
+      },
+      {
+        URL: "#",
+        label: "Privacy policy"
+      },
+      {
+        URL: "#",
+        label: "Terms and conditions"
       }
     ]
   })}}
