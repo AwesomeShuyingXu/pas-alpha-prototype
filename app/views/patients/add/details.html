@@ -23,9 +23,9 @@
         Add new patient
       </span>
       <h1 class="nhsuk-heading-xl">
-        Please enter the patient's NHS number
+        Please confirm the below details are correct
       </h1>
-  <form method="post" action="/patients/add/details">
+  <form method="post" action="/patients/example-id">
     <div class="nhsuk-form-group">
       <label class="nhsuk-label" for="nhs-number">
         NHS number
@@ -38,8 +38,9 @@
         pattern="\d{10}"
         inputmode="numeric"
         aria-describedby="nhs-number-hint"
+        value="0000000000"
         required
-      />
+      ></input>
     </div>
 
     <button class="nhsuk-button" type="submit">

@@ -19,31 +19,13 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
-      <span class="nhsuk-caption-xl">
-        Add new patient
-      </span>
       <h1 class="nhsuk-heading-xl">
-        Please enter the patient's NHS number
+        Prior Approval requests for John Doe
       </h1>
-  <form method="post" action="/patients/add/details">
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="nhs-number">
-        NHS number
-      </label>
-      <input
-        class="nhsuk-input nhsuk-input--width-10"
-        id="nhs-number"
-        name="nhsNumber"
-        type="text"
-        pattern="\d{10}"
-        inputmode="numeric"
-        aria-describedby="nhs-number-hint"
-        required
-      />
-    </div>
+  <form method="post" action="/patients/example-id/select-request-type">
 
     <button class="nhsuk-button" type="submit">
-      Continue
+      New request
     </button>
 
   </form>
