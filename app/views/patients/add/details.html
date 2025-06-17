@@ -29,7 +29,7 @@
         Add new patient
       </span>
       <h1 class="nhsuk-heading-xl">
-        Please fill in additional patient details
+        Add patient with the following details
       </h1>
   <form method="post" action="/patients/example-id">
     <div class="nhsuk-form-group">
@@ -50,126 +50,77 @@
       ></input>
     </div>
 
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="patient-name">
-        <b>Patient name</b>
-      </label>
+      <h2 class="nhsuk-heading-m">Patient details</h2>
+      
+      {{ table({
+        panel: false,
+        firstCellIsHeader: false,
+        rows: [
+          [
+            {
+              text: "Initials"
+            },
+            {
+              text: "JD"
+            }
+          ],
+          [
+            {
+              text: "First name"
+            },
+            {
+              text: "Jeremy"
+            }
+          ],
+          [
+            {
+              text: "Surname"
+            },
+            {
+              text: "Dalston"
+            }
+          ],
+          [
+            {
+              text: "Date of birth"
+            },
+            {
+              text: "12/03/1987"
+            }
+          ],
+          [
+            {
+              text: "Surgery"
+            },
+            {
+              text: "(FRACTURE CLINIC) NORTH OOH-Y00082-NN1 5BD"
+            }
+          ]
+        ]
+      }) }}
 
-      <div class="inline-form" id="patient-name">
-        <label class="nhsuk-label" for="patient-initials">
-          Initials
-        </label>
-        <input
-          class="nhsuk-input  nhsuk-input--width-2"
-          id="patient-initials"
-          name="patient-initials"
-          type="text"
-          autocomplete="off"
-          value="JD"
-        />
-      </div>
-      <div class="inline-form">
-        <label class="nhsuk-label" for="patient-initials">
-          First name (optional)
-        </label>
-        <input
-          class="nhsuk-input  nhsuk-input--width-10"
-          id="patient-initials"
-          name="patient-initials"
-          type="text"
-          autocomplete="off"
-          value="Jeremy"
+    {% from 'details/macro.njk' import details %}
 
-        />
-      </div>
-      <div class="inline-form">
-        <label class="nhsuk-label" for="patient-initials">
-          Surname (optional)
-        </label>
-        <input
-          class="nhsuk-input  nhsuk-input--width-10"
-          id="patient-initials"
-          name="patient-initials"
-          type="text"
-          autocomplete="off"
-          value="Dalston"
-        />
-      </div>
+    {{ details({
+      text: "What should I do if these details are incorrect?",
+      html: "
+        <p>This page shows the demographic details linked to the NHS number you entered.</p>
+        <p>If anything looks incorrect, you can update these details through the <a href='https://digital.nhs.uk/services/personal-demographics-service'>Personal Demographics Service (PDS)</a>.</p>
+      "
+    }) }}
 
-    </div>
 
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="dob">
-        <b>Date of Birth</b>
-      </label>
-      <div class="nhsuk-date-input" id="dob">
-        <div class="nhsuk-date-input__item" >
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">Day</label>
-            <input
-              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-              id="dob-day"
-              name="dob-day"
-              type="text"
-              pattern="\d{2}"
-              inputmode="numeric"
-              value="12"
-            />
-          </div>
-        </div>
-        <div class="nhsuk-date-input__item">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">Month</label>
-            <input
-              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-              id="dob-month"
-              name="dob-month"
-              type="text"
-              pattern="\d{2}"
-              inputmode="numeric"
-              value="03"
-            />
-          </div>
-        </div>
-        <div class="nhsuk-date-input__item">
-          <div class="nhsuk-form-group">
-            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">Year</label>
-            <input
-              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
-              id="dob-year"
-              name="dob-year"
-              type="text"
-              pattern="\d{4}"
-              inputmode="numeric"
-              value="1987"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="gp-practice">
-        <b>GP Practice</b>
-      </label>
-      <span class="nhsuk-hint">
-        You must type either a postcode, practice name or practice code into the below box to find a practice.
-      </span>
-
-      <input
-        class="nhsuk-input"
-        id="gp-practice"
-        name="gp-practice"
-        type="search"
-        placeholder="Search by practice name / postcode / code"
-        autocomplete="off"
-        value="(FRACTURE CLINIC) NORTH OOH-Y00082-NN1 5BD"
-      />
-    </div>
 
     <button class="nhsuk-button" type="submit">
       Submit
     </button>
+
+    <form method="post" action="/patients/add/nhs-number" class="inline-btn">
+      <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+        Change NHS number
+      </button>
+    </form>
+
 
   </form>
 

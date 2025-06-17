@@ -24,12 +24,6 @@
       </h1>
       <h2 class="nhsuk-heading-m">Patient details</h2>
       
-      <form method="post" action="/patients/add/details">
-        <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
-          Edit patient details
-        </button>
-      </form>
-
       {{ table({
         panel: false,
         firstCellIsHeader: false,
@@ -85,14 +79,26 @@
         ]
       }) }}
 
+      {{ details({
+        text: "What should I do if these details are incorrect?",
+        html: "
+          <p>This page shows the demographic details linked to this patient's NHS number.</p>
+          <p>If anything looks incorrect, you can update these details through the <a href='https://digital.nhs.uk/services/personal-demographics-service'>Personal Demographics Service (PDS)</a>.</p>
+        "
+      }) }}
+
+
       <h2 class="nhsuk-heading-m">Action notes</h2>
-      <form method="post" action="/patients/example-id/confirm-gp" class="inline-btn">
+      <form method="post" action="/patients/example-id/select-request-type" class="inline-btn">
         <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
           New request
         </button>
       </form>
       <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
           Upload docs
+      </button>
+      <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
+          New comment
       </button>
       <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
           End of treatment
@@ -114,6 +120,7 @@
         ]
       }) }}
 
+      <p>There are no recorded requests or comments for this patient on the service</p>
 
 
 

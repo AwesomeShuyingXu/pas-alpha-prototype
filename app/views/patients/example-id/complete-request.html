@@ -33,16 +33,219 @@
         Create new approval request for Jeremy Dalston
       </span>
       <h1 class="nhsuk-heading-xl">
-        xxx
+        Complete approval request
       </h1>
       <hr>
-  <form method="post" action="">
-    <p>Thank you for completing the first part of this journey. This part of the service is still in development.</p>
+  <form method="post" action="/patients/example-id">
+    <p>M4C – NHS England V1.5 – Initial Funding Application - Dupilumab for treating severe asthma with type 2 inflammation in children aged 6-11 years (in relation to TA751)</p>
 
+    <h2 class="nhsuk-heading-s">Patient details</h2>
+      
+    <table class="nhsuk-table nhsuk-u-margin-bottom-3">
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">NHS number</td>
+          <td class="nhsuk-table__cell">4857773456</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Initials</td>
+          <td class="nhsuk-table__cell">JD</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">First name</td>
+          <td class="nhsuk-table__cell">Jeremy</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Surname</td>
+          <td class="nhsuk-table__cell">Dalston</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Date of birth</td>
+          <td class="nhsuk-table__cell">12/03/1987</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Surgery</td>
+          <td class="nhsuk-table__cell">(FRACTURE CLINIC) NORTH OOH-Y00082-NN1 5BD</td>
+        </tr>
+      </tbody>
+    </table>
+
+      {{ details({
+        text: "What should I do if these details are incorrect?",
+        html: "
+          <p>This page shows the demographic details linked to this patient's NHS number.</p>
+          <p>If anything looks incorrect, you can update these details through the <a href='https://digital.nhs.uk/services/personal-demographics-service'>Personal Demographics Service (PDS)</a>.</p>
+        "
+      }) }}
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="hospital-number">Hospital number</label>
+      <input class="nhsuk-input nhsuk-input--width-10" id="hospital-number" name="hospital-number" type="text">
+    </div>
+
+    <br>
+    <br>
+    <h2 class="nhsuk-heading-s">Treatment details</h2>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="consultant-name">
+        Start typing the name of the consultant:
+      </label>
+      <div id="consultant-autocomplete-container" class="aa-input-container"></div>
+      <input type="hidden" name="consultant-name" id="consultant-autocomplete">
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="dob">
+        <b>Treatment date</b>
+      </label>
+      <div class="nhsuk-date-input" id="dob">
+        <div class="nhsuk-date-input__item" >
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">Day</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dob-day"
+              name="dob-day"
+              type="text"
+              pattern="\d{2}"
+              inputmode="numeric"
+              value="12"
+            />
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">Month</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dob-month"
+              name="dob-month"
+              type="text"
+              pattern="\d{2}"
+              inputmode="numeric"
+              value="03"
+            />
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">Year</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="dob-year"
+              name="dob-year"
+              type="text"
+              pattern="\d{4}"
+              inputmode="numeric"
+              value="1987"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <h2 class="nhsuk-heading-s">Please indicate whether patient meets the following criteria</h2>
+
+    <div class="nhsuk-form-group">
+
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+          <label class="nhsuk-label">
+            Example question 
+          </h1>
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-inline-1" name="example-inline" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
+              Yes
+            </label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
+              No
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+      Submit request
+    </button>
+    <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
+      Save as draft
+    </button>
+
+  
   </form>
-
-
 
     </div>
   </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+    /* auto-populate with today's date */
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+      const year = today.getFullYear();
+
+      document.getElementById("dob-day").value = day;
+      document.getElementById("dob-month").value = month;
+      document.getElementById("dob-year").value = year;
+    });
+
+
+    const consultantList = [
+      "Abigail Turner (abigail.turner@nhs.net)",
+      "Benjamin Clarke (benjamin.clarke@nhs.net)",
+      "Charlotte Ahmed (charlotte.ahmed@nhs.net)",
+      "David Kaur (david.kaur@nhs.net)",
+      "Emily Wright (emily.wright@nhs.net)",
+      "Farah Hussain (farah.hussain@nhs.net)",
+      "George Patel (george.patel@nhs.net)",
+      "Hannah Doyle (hannah.doyle@nhs.net)",
+      "Imran Shah (imran.shah@nhs.net)",
+      "Jessica Morgan (jessica.morgan@nhs.net)",
+      "Katherine Lowe (katherine.lowe@nhs.net)",
+      "Laura Bennett (laura.bennett@nhs.net)",
+      "Mohammed Ali (mohammed.ali@nhs.net)",
+      "Natasha Gill (natasha.gill@nhs.net)",
+      "Olivia Mason (olivia.mason@nhs.net)",
+      "Paul Richards (paul.richards@nhs.net)",
+      "Qasim Riaz (qasim.riaz@nhs.net)",
+      "Ruth O'Neill (ruth.oneill@nhs.net)",
+      "Samantha Evans (samantha.evans@nhs.net)",
+      "Samuel Green (samuel.green@nhs.net)",
+      "Sarah Thompson (sarah.thompson@nhs.net)",
+      "Thomas Reed (thomas.reed@nhs.net)",
+      "Umair Khan (umair.khan@nhs.net)",
+      "Victoria Bell (victoria.bell@nhs.net)",
+      "William Joyce (william.joyce@nhs.net)",
+      "Xavier Hall (xavier.hall@nhs.net)",
+      "Yasmin Carter (yasmin.carter@nhs.net)",
+      "Zoe Anderson (zoe.anderson@nhs.net)"
+    ];
+
+    accessibleAutocomplete({
+      element: document.querySelector('#consultant-autocomplete-container'),
+      id: 'consultant-autocomplete',
+      name: 'consultant',
+      source: consultantList,
+      minLength: 2,
+      autoselect: true,
+      confirmOnBlur: false,
+      displayMenu: 'overlay'
+    });
+</script>
+
 {% endblock %}
