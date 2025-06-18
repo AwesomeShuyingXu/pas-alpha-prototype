@@ -149,37 +149,215 @@
     <br>
     <h2 class="nhsuk-heading-s">Please indicate whether patient meets the following criteria</h2>
 
+    <!-- Question 1 -->
     <div class="nhsuk-form-group">
-
       <fieldset class="nhsuk-fieldset">
-        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-          <label class="nhsuk-label">
-            Example question 
-          </h1>
+        <legend class="nhsuk-fieldset__legend">
+          1. I confirm the patient is aged 6–11 years with severe asthma with type 2 inflammation and the decision to commence a trial of dupilumab has been made by a paediatric severe asthma MDT within a specialised paediatric respiratory service.
         </legend>
         <div class="nhsuk-radios nhsuk-radios--inline">
           <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="example-inline-1" name="example-inline" type="radio" value="yes">
-            <label class="nhsuk-label nhsuk-radios__label" for="example-inline-1">
-              Yes
-            </label>
+            <input class="nhsuk-radios__input" id="q1-yes" name="q1" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q1-yes">Yes</label>
           </div>
           <div class="nhsuk-radios__item">
-            <input class="nhsuk-radios__input" id="example-inline-2" name="example-inline" type="radio" value="no">
-            <label class="nhsuk-label nhsuk-radios__label" for="example-inline-2">
-              No
-            </label>
+            <input class="nhsuk-radios__input" id="q1-no" name="q1" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q1-no">No</label>
           </div>
         </div>
       </fieldset>
     </div>
 
-    <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+    <label class="nhsuk-label" for="specialist-centre">
+      Please choose the correct specialist centre
+    </label>
+    <select class="nhsuk-select" id="specialist-centre" name="specialist-centre">
+      <option value="">Please select</option>
+      <option value="alder-hey">Alder Hey Children's NHS FT</option>
+      <option value="barts">Barts Health NHS FT</option>
+      <option value="birmingham">Birmingham Women's and Children NHS FT</option>
+      <option value="brighton">Brighton and Sussex University Hospitals NHS FT</option>
+      <option value="bristol">Bristol Children’s Hospital</option>
+      <option value="cambridge">Cambridge University Hospitals NHS FT</option>
+      <option value="gosh">Great Ormond Street Hospital NHS FT</option>
+      <option value="gstt">Guy’s and St Thomas' NHS FT</option>
+      <option value="imperial">Imperial College Healthcare NHS Trust</option>
+      <option value="kings">King's College Hospital NHS FT</option>
+      <option value="leeds">Leeds Teaching Hospitals NHS Trust</option>
+      <option value="manchester-nmgh">Manchester University Hospitals NHS FT (NMGH)</option>
+      <option value="manchester-wythenshawe">Manchester University Hospitals NHS FT (Wythenshawe)</option>
+      <option value="nottingham">Nottingham University Hospitals NHS Trust</option>
+      <option value="oxford">Oxford University Hospitals NHS Trust</option>
+      <option value="rbh">Royal Brompton and Harefield NHS FT</option>
+      <option value="sheffield">Sheffield Children's NHS FT</option>
+      <option value="south-tees">South Tees Hospitals NHS FT</option>
+      <option value="newcastle">The Newcastle Upon Tyne Hospitals NHS FT</option>
+    </select>
+    <br><br>
+
+    <!-- Question 2 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          2. I confirm that <strong>dupilumab</strong> is to be used in combination with optimised standard therapy (defined as a full trial of and, if tolerated, documented adherence with moderate to high dose ICS and additional controller medications, with no maintenance oral corticosteroids for their asthma).
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q2-yes" name="q2" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q2-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q2-no" name="q2" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q2-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          3. I confirm that medicine adherence has been confirmed by one or more of: a) prescription refill checks, b) monitoring through a smart inhaler or c) FeNO suppression test using directly observed inhaled corticosteroids.
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q3-yes" name="q3" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q3-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q3-no" name="q3" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q3-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          4. I confirm that the patient has a blood eosinophil count of 150 cells per microlitre or more in the 12 months before starting this or a previous asthma biologic therapy.
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q4-yes" name="q4" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q4-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q4-no" name="q4" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q4-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          5. I confirm that the patient has had 4 or more exacerbations requiring systemic corticosteroids in the 12 months before starting this or a previous asthma biologic therapy.
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q5-yes" name="q5" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q5-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q5-no" name="q5" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q5-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          6. I confirm that the patient has a fractional exhaled nitric oxide of 25 parts per billion or more in the previous 12 months.
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q6-yes" name="q6" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q6-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q6-no" name="q6" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q6-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          7. I confirm that the patient is not eligible for, or has not tolerated mepolizumab or has asthma that has not responded adequately to mepolizumab.
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q7-yes" name="q7" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q7-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q7-no" name="q7" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q7-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 8 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          8. I confirm the patient will be reviewed for response and the patient has been informed <strong>dupilumab</strong> will only be continued if there is an improvement in overall asthma control and at least a 50% reduction in rate of severe exacerbations requiring treatment with systemic corticosteroids use after 12 months.
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q8-yes" name="q8" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q8-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q8-no" name="q8" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q8-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- Question 9 -->
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend">
+          9. I confirm the patient will receive treatment at a dose and frequency in line with the marketing authorisation but not exceeding the maximum (or its equivalent) described by NICE (400mg initially then 200mg every other week).
+        </legend>
+        <div class="nhsuk-radios nhsuk-radios--inline">
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q9-yes" name="q9" type="radio" value="yes">
+            <label class="nhsuk-label nhsuk-radios__label" for="q9-yes">Yes</label>
+          </div>
+          <div class="nhsuk-radios__item">
+            <input class="nhsuk-radios__input" id="q9-no" name="q9" type="radio" value="no">
+            <label class="nhsuk-label nhsuk-radios__label" for="q9-no">No</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+
+    <button class="nhsuk-button nhsuk-button--secondary inline-form" data-module="nhsuk-button" type="submit">
       Submit request
     </button>
-    <button class="nhsuk-button nhsuk-button--secondary inline-btn" data-module="nhsuk-button" type="submit">
-      Save as draft
+    <button class="nhsuk-button nhsuk-button--secondary inline-form" data-module="nhsuk-button" type="submit">
+      Save as incomplete draft
     </button>
+    <button class="nhsuk-button nhsuk-button--secondary inline-form" data-module="nhsuk-button" type="submit">
+      Save as draft for review
+    </button>
+
 
   
   </form>
