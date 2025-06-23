@@ -20,79 +20,29 @@
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
       <h1 class="nhsuk-heading-xl">
-        Unpaid invoices
+        Invoices
       </h1>
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Help with this page
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <p>This page displays the invoices which have yet to be paid. </p>
-          <p>Click on the Invoice ID for a given invoice to view and manage that invoice's requests.</p>
-        </div>
-      </details>
-
-      <details class="nhsuk-details">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Apply filters to this table
-          </span>
-        </summary>
-        <div class="nhsuk-details__text">
-          <div class="nhsuk-form-group">
-            <h2 class="nhsuk-heading-s">Filter by</h2>
-            <label class="nhsuk-label" for="trust-name">
-              Trust
-            </label>
-            <div id="trust-autocomplete-container" class="aa-input-container"></div>
-            <input type="hidden" name="trust-name" id="trust-autocomplete">
-            <br>
-            <button class="nhsuk-button" type="submit">
-              Apply
-            </button>
-          </div>
-        </div>
-      </details>
-
-
-      <table class="nhsuk-table">
-        <thead class="nhsuk-table__head">
-          <tr>
-            <th scope="col" class="nhsuk-table__header">Invoice ID</th>
-            <th scope="col" class="nhsuk-table__header">Trust</th>
-            <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Date recieved</th>
-            <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Number of outstanding actions</th>
-          </tr>
-        </thead>
-        <tbody class="nhsuk-table__body">
-          <tr class="nhsuk-table__row">
-            <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​100425002</a></th>
-            <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
-            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">10/04/25</td>
-            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">19</td>
-
-          </tr>
-          <tr class="nhsuk-table__row">
-            <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">070425001​</a></th>
-            <td class="nhsuk-table__cel">Oxleas NHS Foundation Trust</td>
-            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">07/04/25</td>
-            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">31</td>          
-          </tr>
-          <tr class="nhsuk-table__row">
-            <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​050325002</a></th>
-            <td class="nhsuk-table__cell">Example NHS Foundation Trust​</td>
-            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">05/03/25</td>
-            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">27</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-    </div>
+      
+  <div class="nhsuk-action-link">
+    <a class="nhsuk-action-link__link" href="/invoices/unpaid">
+      <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+      </svg>
+      <span class="nhsuk-action-link__text">Unpaid invoices</span>
+    </a>
   </div>
+
+  <div class="nhsuk-action-link">
+    <a class="nhsuk-action-link__link" href="*">
+      <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" width="36" height="36">
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+      </svg>
+      <span class="nhsuk-action-link__text">Paid invoices</span>
+    </a>
+  </div>
+
 {% endblock %}
 
 {% block pageScripts %}
