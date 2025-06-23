@@ -1,0 +1,169 @@
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout.html' %}
+{% from "radios/macro.njk" import radios %}
+{% from "select/macro.njk" import select %}
+
+
+<!-- Set the page title -->
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+  <div class="nhsuk-back-link"> <a class="nhsuk-back-link__link" href="/invoices">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      All invoices</a>
+  </div>
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <h1 class="nhsuk-heading-xl">
+        Invoice 220625001 for Example NHS Foundation Trust​
+      </h1>
+      <div class="nhsuk-warning-callout">
+        <h3 class="nhsuk-warning-callout__label"> <span role="text">
+          <span class="nhsuk-u-visually-hidden">Important: </span>
+            Invoice not approved
+          </span> 
+        </h3>
+        <p>This invoice has 5 requests which need to be resolved manually before it can be approved.</p>
+      </div>
+
+      <div class="nhsuk-tabs" data-module="nhsuk-tabs">
+        <h2 class="nhsuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="nhsuk-tabs__list">
+          <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
+            <a class="nhsuk-tabs__tab" href="#flags">
+              Flags (5)
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#unknown-patients">
+              Unknown patients (0)
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#unmatched-patients">
+              Unmatched patients (0)
+            </a>
+          </li>
+          <li class="nhsuk-tabs__list-item">
+            <a class="nhsuk-tabs__tab" href="#successful-requests">
+              Successful requests
+            </a>
+          </li>
+        </ul>
+        <div class="nhsuk-tabs__panel" id="flags">
+        <p>The following requests have raised one or more flags which prevent them from being automatically accepted. You must manually accept or dispute each request in order to approve the invoice.</p>      
+
+
+        {% from 'details/macro.njk' import details %}
+
+        {{ details({
+          text: "Apply filters to this table",
+          html: "
+            <div class='nhsuk-form-group'>
+              <label class='nhsuk-label' for='select-1'>
+                Includes flag
+              </label> <select class='nhsuk-select' id='select-1' name='select-1'>
+                <option value='1' selected>All</option>
+                <option value='2'>Old year debit</option>
+                <option value='3'>Drug not matching</option>
+                <option value='4'>Treatment gap</option>
+                <option value='5'>Previous charge in dispute</option>
+              </select>
+            </div>
+          "
+        }) }}
+
+
+        <table class="nhsuk-table">
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Invoiced drug</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Invoiced cost (£)</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Treatment administered date</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Treatment start date</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Highest flag</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Other flags</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Accept</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Dispute</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">Infliximab</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 842.50</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">Old year debit</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">0</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+                <a class="nhsuk-link" href="#">Accept</a>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+                <a class="nhsuk-link" href="#">Dispute</a>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+                <a class="nhsuk-link" href="#">Details</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        </div>
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="unknown-patients">
+          <p>There are no unknown patients in this invoice</p>
+        </div>
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="unmatched-patients">
+          <p>There are no unmatched patients in this invoice</p>
+
+        </div>
+        <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="successful-requests">
+          <table class="nhsuk-table">
+            <caption class="nhsuk-table__caption">Successful invoices</caption>
+            <thead class="nhsuk-table__head">
+              <tr>
+                <th scope="col" class="nhsuk-table__header">Case manager</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Cases opened</th>
+                <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Cases closed</th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">David Francis</td>
+                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1380</td>
+                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1472</td>
+              </tr>
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Paul Farmer</td>
+                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1129</td>
+                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1083</td>
+              </tr>
+              <tr class="nhsuk-table__row">
+                <td class="nhsuk-table__cell">Rita Patel</td>
+                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1539</td>
+                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1265</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+{% endblock %}

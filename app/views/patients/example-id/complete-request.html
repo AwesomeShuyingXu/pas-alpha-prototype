@@ -80,6 +80,10 @@
 
     <div class="nhsuk-form-group">
       <label class="nhsuk-label" for="hospital-number">Hospital number</label>
+      <div class="nhsuk-hint" id="nhs-hint">
+        A unique patient identifier used within this hospital or NHS Trust. Enter it exactly as provided on the patient’s documentation.
+      </div>
+
       <input class="nhsuk-input nhsuk-input--width-10" id="hospital-number" name="hospital-number" type="text">
     </div>
 
@@ -419,7 +423,7 @@
       id: 'consultant-autocomplete',
       name: 'consultant',
       source: consultantList,
-      minLength: 2,
+      minLength: 1,
       autoselect: true,
       confirmOnBlur: false,
       displayMenu: 'overlay'

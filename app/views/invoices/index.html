@@ -1,0 +1,145 @@
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout.html' %}
+{% from "radios/macro.njk" import radios %}
+{% from "select/macro.njk" import select %}
+
+
+<!-- Set the page title -->
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <h1 class="nhsuk-heading-xl">
+        Unpaid invoices
+      </h1>
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Help with this page
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <p>This page displays the invoices which have yet to be paid. </p>
+          <p>Click on the Invoice ID for a given invoice to view and manage that invoice's requests.</p>
+        </div>
+      </details>
+
+      <details class="nhsuk-details">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Apply filters to this table
+          </span>
+        </summary>
+        <div class="nhsuk-details__text">
+          <div class="nhsuk-form-group">
+            <h2 class="nhsuk-heading-s">Filter by</h2>
+            <label class="nhsuk-label" for="trust-name">
+              Trust
+            </label>
+            <div id="trust-autocomplete-container" class="aa-input-container"></div>
+            <input type="hidden" name="trust-name" id="trust-autocomplete">
+            <br>
+            <button class="nhsuk-button" type="submit">
+              Apply
+            </button>
+          </div>
+        </div>
+      </details>
+
+
+      <table class="nhsuk-table">
+        <thead class="nhsuk-table__head">
+          <tr>
+            <th scope="col" class="nhsuk-table__header">Invoice ID</th>
+            <th scope="col" class="nhsuk-table__header">Trust</th>
+            <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Date recieved</th>
+            <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Number of outstanding actions</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr class="nhsuk-table__row">
+            <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​100425002</a></th>
+            <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">10/04/25</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">19</td>
+
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">070425001​</a></th>
+            <td class="nhsuk-table__cel">Oxleas NHS Foundation Trust</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">07/04/25</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">31</td>          
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​050325002</a></th>
+            <td class="nhsuk-table__cell">Example NHS Foundation Trust​</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">05/03/25</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">27</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+    const trustList = [
+      "Barts Health NHS Trust",
+      "Example NHS Foundation Trust",
+      "Oxleas NHS Foundation Trust",
+      "Guy's and St Thomas' NHS Foundation Trust",
+      "University College London Hospitals NHS Foundation Trust",
+      "Imperial College Healthcare NHS Trust",
+      "Manchester University NHS Foundation Trust",
+      "King's College Hospital NHS Foundation Trust",
+      "Leeds Teaching Hospitals NHS Trust",
+      "Oxford University Hospitals NHS Foundation Trust",
+      "Sheffield Teaching Hospitals NHS Foundation Trust",
+      "Nottingham University Hospitals NHS Trust",
+      "Cambridge University Hospitals NHS Foundation Trust",
+      "Newcastle upon Tyne Hospitals NHS Foundation Trust",
+      "Birmingham Women's and Children's NHS Foundation Trust",
+      "Royal Free London NHS Foundation Trust",
+      "Great Ormond Street Hospital for Children NHS Foundation Trust",
+      "East Suffolk and North Essex NHS Foundation Trust",
+      "Mid and South Essex NHS Foundation Trust",
+      "Northumbria Healthcare NHS Foundation Trust",
+      "Frimley Health NHS Foundation Trust",
+      "University Hospitals Bristol and Weston NHS Foundation Trust",
+      "Liverpool University Hospitals NHS Foundation Trust",
+      "Shrewsbury and Telford Hospital NHS Trust",
+      "Portsmouth Hospitals University NHS Trust",
+      "North Tees and Hartlepool NHS Foundation Trust",
+      "Gloucestershire Hospitals NHS Foundation Trust"
+    ];
+
+
+    accessibleAutocomplete({
+      element: document.querySelector('#trust-autocomplete-container'),
+      id: 'trust-autocomplete',
+      name: 'trust',
+      source: trustList,
+      minLength: 1,
+      autoselect: true,
+      confirmOnBlur: false,
+      displayMenu: 'overlay'
+    });
+</script>
+
+{% endblock %}

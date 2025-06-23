@@ -46,30 +46,51 @@
   <div class="nhsuk-navigation-container">
     <nav class="nhsuk-navigation" id="header-navigation" role="navigation" aria-label="Primary navigation">
       <ul class="nhsuk-header__navigation-list">
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="/patients/">
+        <li class="nhsuk-header__navigation-item dropdown">
+          <a class="nhsuk-header__navigation-link dropbtn" href="/patients/">
             Patient management
           </a>
+          <div class="dropdown-content">
+            <a class="nhsuk-header__navigation-link" href="#">Search patients</a>
+            <a class="nhsuk-header__navigation-link" href="/patients/add/nhs-number">Add new patient</a>
+            <a class="nhsuk-header__navigation-link" href="#">Patient data requests</a>
+          </div>
         </li>
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="#">
+        <li class="nhsuk-header__navigation-item dropdown">
+          <a class="nhsuk-header__navigation-link dropbtn" href="#">
+            Forms
+          </a>
+          <div class="dropdown-content">
+            <a class="nhsuk-header__navigation-link" href="#">Search forms</a>
+            <a class="nhsuk-header__navigation-link" href="#">Manage forms</a>
+          </div>
+        </li>
+        </li>
+        <li class="nhsuk-header__navigation-item dropdown">
+          <a class="nhsuk-header__navigation-link dropbtn" href="#">
             Reporting
           </a>
+          <div class="dropdown-content">
+            <a class="nhsuk-header__navigation-link" href="#">Generate new report</a>
+            <a class="nhsuk-header__navigation-link" href="#">View saved reports</a>
+            <a class="nhsuk-header__navigation-link" href="#">Approval outcomes</a>
+            <a class="nhsuk-header__navigation-link" href="#">System reports</a>
+          </div>
         </li>
         <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="#">
+          <a class="nhsuk-header__navigation-link" href="/invoices">
             Invoices
           </a>
         </li>
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="#">
-            System configuration
-          </a>
-        </li>
-        <li class="nhsuk-header__navigation-item">
-          <a class="nhsuk-header__navigation-link" href="#">
+        <li class="nhsuk-header__navigation-item dropdown">
+          <a class="nhsuk-header__navigation-link dropbtn" href="#">
             Account
           </a>
+          <div class="dropdown-content">
+            <a class="nhsuk-header__navigation-link" href="#">Manage my account</a>
+            <a class="nhsuk-header__navigation-link" href="#">Manage users</a>
+            <a class="nhsuk-header__navigation-link" href="#">Switch role</a>
+          </div>
         </li>
         <li class="nhsuk-header__navigation-item">
           <a class="nhsuk-header__navigation-link" href="#">
