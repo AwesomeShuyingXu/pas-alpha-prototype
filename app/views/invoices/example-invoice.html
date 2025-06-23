@@ -28,14 +28,43 @@
       <h1 class="nhsuk-heading-xl">
         Invoice 220625001 for Example NHS Foundation Trust​
       </h1>
-      <div class="nhsuk-warning-callout">
+      <div class="nhsuk-warning-callout margin-bottom-30">
         <h3 class="nhsuk-warning-callout__label"> <span role="text">
           <span class="nhsuk-u-visually-hidden">Important: </span>
             Invoice not approved
           </span> 
         </h3>
-        <p>This invoice has 5 requests which need to be resolved manually before it can be approved.</p>
+        <p>This invoice has 2 requests which need to be resolved manually before it can be approved.</p>
       </div>
+
+      <h2 class="nhsuk-heading-s">
+        Invoice summary
+      </h2>
+
+      <table class="nhsuk-table">
+        <thead class="nhsuk-table__head">
+          <tr>
+            <th scope="col" class="nhsuk-table__header">Invoice ID</th>
+            <th scope="col" class="nhsuk-table__header">Trust</th>
+            <th scope="col" class="nhsuk-table__header">Date recieved</th>
+            <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Total value (£)</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">​100425002</td>
+            <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
+            <td class="nhsuk-table__cell ">10/06/25</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">4916.00</td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="nhsuk-heading-s">
+        Manage invoice requests
+      </h2>
+
 
       <div class="nhsuk-tabs" data-module="nhsuk-tabs">
         <h2 class="nhsuk-tabs__title">
@@ -44,7 +73,7 @@
         <ul class="nhsuk-tabs__list">
           <li class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected">
             <a class="nhsuk-tabs__tab" href="#flags">
-              Flags (5)
+              Flags (2)
             </a>
           </li>
           <li class="nhsuk-tabs__list-item">
@@ -66,9 +95,19 @@
         <div class="nhsuk-tabs__panel" id="flags">
         <p>The following requests have raised one or more flags which prevent them from being automatically accepted. You must manually accept or dispute each request in order to approve the invoice.</p>      
 
-
+        {{ details({
+          text: "View flag definitions",
+          html: "
+          <ul>
+            <li><b>Old year debit:</b> The date of the request is from a previous year</li>
+            <li><b>Drug not matching:</b> The drug on the invoice differs from that in the matching request on the system</li>
+            <li><b>Treatment gap:</b> A gap is present in patient's treatment and no accompanying treatment gap form has been submitted</li>
+            <li><b>Previous charge in dispute:</b> This is the continuation of a request still in dispute</li>
+          </ul>
+          <p>If there are multiple flags, the flag type closest to the top of this list is displayed in the 'highest flag' column</p>
+          "
+        }) }}
         {% from 'details/macro.njk' import details %}
-
         {{ details({
           text: "Apply filters to this table",
           html: "
@@ -105,9 +144,26 @@
             <tr class="nhsuk-table__row">
               <td class="nhsuk-table__cell nhsuk-u-font-size-16">Infliximab</td>
               <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 842.50</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/25</td>
-              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/24</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/24</td>
               <td class="nhsuk-table__cell nhsuk-u-font-size-16">Old year debit</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">0</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+                <a class="nhsuk-link" href="#">Accept</a>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+                <a class="nhsuk-link" href="#">Dispute</a>
+              </td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">
+                <a class="nhsuk-link" href="#">Details</a>
+              </td>
+            </tr>
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">Dupilumab</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 231.00</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">03/02/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">12/06/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">Previous charge in dispute</td>
               <td class="nhsuk-table__cell nhsuk-u-font-size-16">0</td>
               <td class="nhsuk-table__cell nhsuk-u-font-size-16">
                 <a class="nhsuk-link" href="#">Accept</a>
@@ -132,33 +188,28 @@
 
         </div>
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="successful-requests">
-          <table class="nhsuk-table">
-            <caption class="nhsuk-table__caption">Successful invoices</caption>
-            <thead class="nhsuk-table__head">
-              <tr>
-                <th scope="col" class="nhsuk-table__header">Case manager</th>
-                <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Cases opened</th>
-                <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Cases closed</th>
-              </tr>
-            </thead>
-            <tbody class="nhsuk-table__body">
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__cell">David Francis</td>
-                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1380</td>
-                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1472</td>
-              </tr>
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__cell">Paul Farmer</td>
-                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1129</td>
-                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1083</td>
-              </tr>
-              <tr class="nhsuk-table__row">
-                <td class="nhsuk-table__cell">Rita Patel</td>
-                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1539</td>
-                <td class="nhsuk-table__cell nhsuk-table__cell--numeric">1265</td>
-              </tr>
-            </tbody>
-          </table>
+        <table class="nhsuk-table">
+          <thead class="nhsuk-table__head">
+            <tr class="nhsuk-table__row">
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Invoiced drug</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Invoiced cost (£)</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Treatment administered date</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Treatment start date</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Highest flag</th>
+              <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Other flags</th>
+            </tr>
+          </thead>
+          <tbody class="nhsuk-table__body">
+            <tr class="nhsuk-table__row">
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">Infliximab</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">1 842.50</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/25</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">N/A</td>
+              <td class="nhsuk-table__cell nhsuk-u-font-size-16">0</td>
+            </tr>
+          </tbody>
+        </table>
 
         </div>
       </div>
