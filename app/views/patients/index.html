@@ -1,4 +1,4 @@
-<!-- Extends the layout from /app/views/layout.html -->
+<!-- Extends the layout from /app/views/layout.html -->Add commentMore actions
 {% extends 'layout.html' %}
 {% from "radios/macro.njk" import radios %}
 {% from "select/macro.njk" import select %}
@@ -20,11 +20,15 @@
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
       <h1 class="nhsuk-heading-xl">
-        Invoices
+        Manage patients
       </h1>
       
-      <a href="unpaid">Unpaid invoices</a>
-      <a href="unpaid">Paid invoices</a>
+      <form method="post" action="/patients/add/nhs-number">
+        <button class="nhsuk-button nhsuk-button--secondary" data-module="nhsuk-button" type="submit">
+          Add new patient
+        </button>
+      </form>
+
     </div>
   </div>
-{% endblock %}
+{% endblock %}Add comment
