@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+{% block beforeContent %}
+  <div class="nhsuk-back-link">
+    <a class="nhsuk-back-link__link" href="/invoices/example-invoice">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back to invoice ​100425002
+    </a>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <h1 class="nhsuk-heading-xl">
+        Invoice charge INV-220625001-L1
+      </h1>
+
+      <table class="nhsuk-table">
+        <tbody class="nhsuk-table__body">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Parent invoice ID</th>
+            <td class="nhsuk-table__cell">​100425002</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Trust</th>
+            <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Charge reference ID</th>
+            <td class="nhsuk-table__cell">INV-220625001-L1</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Pseudonomised patient ID</th>
+            <td class="nhsuk-table__cell">icos-asda-noij</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Charge status</th>
+            <td class="nhsuk-table__cell">Not approved due to flags</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Invoiced drug</th>
+            <td class="nhsuk-table__cell">Infliximab</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Invoiced cost (£)</th>
+            <td class="nhsuk-table__cell">1 842.50</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Treatment administered date</th>
+            <td class="nhsuk-table__cell">05/06/24</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Treatment start date</th>
+            <td class="nhsuk-table__cell">05/06/24</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="nhsuk-heading-m">This charge has raised the following flags</h2>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li><b>Old year debit</b> – The date of the charge is from a previous year</li>
+        <li><b>Drug not matching</b> – The drug on the charge differs from that in the matching request on the system</li>
+      </ul>
+      <p>A full list of the types of flags and more detail about the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a></p>
+
+      <br>
+
+
+      <div class="nhsuk-button-group">
+        <a class="nhsuk-button nhsuk-button--secondary" href="#">Accept charge</a>
+        <a class="nhsuk-button nhsuk-button--secondary" href="#">Dispute charge</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
