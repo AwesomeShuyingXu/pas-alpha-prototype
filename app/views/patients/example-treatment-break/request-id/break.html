@@ -1,0 +1,293 @@
+<!-- Extends the layout from /app/views/layout.html -->
+{% extends 'layout.html' %}
+{% from "radios/macro.njk" import radios %}
+{% from "select/macro.njk" import select %}
+
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+  <div class="nhsuk-back-link"> <a class="nhsuk-back-link__link" href="/patients/example-treatment-break">
+      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
+        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
+      </svg>
+      Back</a>
+  </div>
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <!-- Add your content here -->
+      <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
+
+      <h1 class="nhsuk-heading-xl">
+        Complete treatment break request for request <a href="">asji-aios-aosl</a>
+      </h1>
+      <hr>
+  <form method="post" action="/patients/example-id">
+
+    <h2 class="nhsuk-heading-s">Patient details</h2>
+      
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="hospital-number">Hospital number</label>
+      <div class="nhsuk-hint" id="nhs-hint">
+        A unique patient identifier used within this hospital or NHS Trust. Enter it exactly as provided on the patient’s documentation.
+      </div>
+
+      <input class="nhsuk-input nhsuk-input--width-10" id="hospital-number" name="hospital-number" type="text" value="12939292">
+    </div>
+
+    <br>
+    <br>
+    <h2 class="nhsuk-heading-s">Initial treatment details</h2>
+
+    <table class="nhsuk-table nhsuk-u-margin-bottom-3">
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><b>Drug</b></td>
+          <td class="nhsuk-table__cell">Pembrolizumab</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="consultant-name">
+        Start typing the name of the consultant:
+      </label>
+      <div id="consultant-autocomplete-container" class="aa-input-container"></div>
+      <input type="hidden" name="consultant-name" id="consultant-autocomplete" value="Emily Wright (emily.wright@nhs.net)">
+    </div>
+    <br>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="dob">
+        <b>Initial treatment start date</b>
+      </label>
+      <div class="nhsuk-date-input" id="dob">
+        <div class="nhsuk-date-input__item" >
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">Day</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dob-day"
+              name="dob-day"
+              type="text"
+              pattern="\d{2}"
+              inputmode="numeric"
+              value="10"
+            />
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">Month</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dob-month"
+              name="dob-month"
+              type="text"
+              pattern="\d{2}"
+              inputmode="numeric"
+              value="06"
+            />
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">Year</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="dob-year"
+              name="dob-year"
+              type="text"
+              pattern="\d{4}"
+              inputmode="numeric"
+              value="2025"
+            />
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <label class="nhsuk-label" for="dob">
+        <b>Start date of last cycle administered</b>
+      </label>
+      <div class="nhsuk-date-input" id="dob">
+        <div class="nhsuk-date-input__item" >
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">Day</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dob-day"
+              name="dob-day"
+              type="text"
+              pattern="\d{2}"
+              inputmode="numeric"
+            />
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">Month</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dob-month"
+              name="dob-month"
+              type="text"
+              pattern="\d{2}"
+              inputmode="numeric"
+            />
+          </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">Year</label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="dob-year"
+              name="dob-year"
+              type="text"
+              pattern="\d{4}"
+              inputmode="numeric"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div class="nhsuk-form-group">
+        <h2 class="nhsuk-heading-s">Treatment break details</h2>
+        <label class="nhsuk-label" for="dob">
+        <b>Expected treatment restart date</b>
+        </label>
+        <div class="nhsuk-date-input" id="dob">
+        <div class="nhsuk-date-input__item" >
+            <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-day">Day</label>
+            <input
+                class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                id="dob-day"
+                name="dob-day"
+                type="text"
+                pattern="\d{2}"
+                inputmode="numeric"
+            />
+            </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-month">Month</label>
+            <input
+                class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                id="dob-month"
+                name="dob-month"
+                type="text"
+                pattern="\d{2}"
+                inputmode="numeric"
+            />
+            </div>
+        </div>
+        <div class="nhsuk-date-input__item">
+            <div class="nhsuk-form-group">
+            <label class="nhsuk-label nhsuk-date-input__label" for="dob-year">Year</label>
+            <input
+                class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                id="dob-year"
+                name="dob-year"
+                type="text"
+                pattern="\d{4}"
+                inputmode="numeric"
+            />
+            </div>
+        </div>
+
+        <p style="margin-top:40px;">In the full version of the site, furter details needed surrounding the treatment break would be requested here.</p>
+    </div>
+
+    </div>
+
+    <br>
+
+
+
+
+    <button class="nhsuk-button nhsuk-button--secondary inline-form" data-module="nhsuk-button" type="submit">
+      Submit request
+    </button>
+    <button class="nhsuk-button nhsuk-button--secondary inline-form" data-module="nhsuk-button" type="submit">
+      Save as incomplete draft
+    </button>
+    <button class="nhsuk-button nhsuk-button--secondary inline-form" data-module="nhsuk-button" type="submit">
+      Save as draft for review
+    </button>
+
+
+  
+  </form>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+
+<script>
+
+
+    const consultantList = [
+      "Abigail Turner (abigail.turner@nhs.net)",
+      "Benjamin Clarke (benjamin.clarke@nhs.net)",
+      "Charlotte Ahmed (charlotte.ahmed@nhs.net)",
+      "David Kaur (david.kaur@nhs.net)",
+      "Emily Wright (emily.wright@nhs.net)",
+      "Farah Hussain (farah.hussain@nhs.net)",
+      "George Patel (george.patel@nhs.net)",
+      "Hannah Doyle (hannah.doyle@nhs.net)",
+      "Imran Shah (imran.shah@nhs.net)",
+      "Jessica Morgan (jessica.morgan@nhs.net)",
+      "Katherine Lowe (katherine.lowe@nhs.net)",
+      "Laura Bennett (laura.bennett@nhs.net)",
+      "Mohammed Ali (mohammed.ali@nhs.net)",
+      "Natasha Gill (natasha.gill@nhs.net)",
+      "Olivia Mason (olivia.mason@nhs.net)",
+      "Paul Richards (paul.richards@nhs.net)",
+      "Qasim Riaz (qasim.riaz@nhs.net)",
+      "Ruth O'Neill (ruth.oneill@nhs.net)",
+      "Samantha Evans (samantha.evans@nhs.net)",
+      "Samuel Green (samuel.green@nhs.net)",
+      "Sarah Thompson (sarah.thompson@nhs.net)",
+      "Thomas Reed (thomas.reed@nhs.net)",
+      "Umair Khan (umair.khan@nhs.net)",
+      "Victoria Bell (victoria.bell@nhs.net)",
+      "William Joyce (william.joyce@nhs.net)",
+      "Xavier Hall (xavier.hall@nhs.net)",
+      "Yasmin Carter (yasmin.carter@nhs.net)",
+      "Zoe Anderson (zoe.anderson@nhs.net)"
+    ];
+
+    accessibleAutocomplete({
+      element: document.querySelector('#consultant-autocomplete-container'),
+      id: 'consultant-autocomplete',
+      name: 'consultant',
+      source: consultantList,
+      defaultValue: 'Emily Wright (emily.wright@nhs.net)',
+      minLength: 1,
+      autoselect: true,
+      confirmOnBlur: false,
+      displayMenu: 'overlay'
+    });
+</script>
+
+{% endblock %}
