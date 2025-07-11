@@ -78,15 +78,6 @@
           </div>
         </li>
         <li class="nhsuk-header__navigation-item dropdown">
-          <a class="nhsuk-header__navigation-link dropbtn" href="/invoices/">
-            Invoices
-          </a>
-          <div class="dropdown-content">
-            <a class="nhsuk-header__navigation-link" href="/invoices/unpaid">Unpaid invoices</a>
-            <a class="nhsuk-header__navigation-link" href="#">Paid invoices</a>
-          </div>
-        </li>
-        <li class="nhsuk-header__navigation-item dropdown">
           <a class="nhsuk-header__navigation-link dropbtn" href="#">
             Account
           </a>
@@ -96,14 +87,18 @@
             <a class="nhsuk-header__navigation-link" href="#">Switch role</a>
           </div>
         </li>
+        <li class="nhsuk-header__navigation-item dropdown">
+          <a class="nhsuk-header__navigation-link dropbtn" href="/invoices/">
+            Invoices
+          </a>
+          <div class="dropdown-content">
+            <a class="nhsuk-header__navigation-link" href="/invoices/unpaid">Unpaid invoices</a>
+            <a class="nhsuk-header__navigation-link" href="#">Paid invoices</a>
+          </div>
+        </li>
         <li class="nhsuk-header__navigation-item">
           <a class="nhsuk-header__navigation-link" href="#">
             Logout
-          </a>
-        </li>
-        <li class="nhsuk-header__navigation-item nhsuk-header__navigation-item--home">
-          <a class="nhsuk-header__navigation-link" href="/">
-            Home
           </a>
         </li>
         <li class="nhsuk-mobile-menu-container">
@@ -153,6 +148,41 @@
 
 {% block bodyEnd %}
   {% block scripts %}
+    <script>
+      (function () {
+        const removedDropdowns = [];
+
+        function updateDropdowns() {
+          const screenIsSmall = window.innerWidth < 720;
+
+          if (screenIsSmall && removedDropdowns.length === 0) {
+            document.querySelectorAll('.dropdown-content').forEach(el => {
+              // Save reference to reinsert later
+              removedDropdowns.push({
+                parent: el.parentElement,
+                element: el
+              });
+              el.parentElement?.removeChild(el);
+            });
+          }
+
+          if (!screenIsSmall && removedDropdowns.length > 0) {
+            removedDropdowns.forEach(({ parent, element }) => {
+              // Avoid duplicating if already reinserted
+              if (!parent.contains(element)) {
+                parent.appendChild(element);
+              }
+            });
+            removedDropdowns.length = 0;
+          }
+        }
+
+        // Run on load and resize
+        window.addEventListener('DOMContentLoaded', updateDropdowns);
+        window.addEventListener('resize', updateDropdowns);
+      })();
+
+    </script>
     <!-- Custom JavaScript files can be added to this file -->
     {% include "includes/scripts.html" %}
     <!-- For adding page specific JavsScript -->
