@@ -31,10 +31,10 @@
       <div class="nhsuk-warning-callout margin-bottom-30">
         <h3 class="nhsuk-warning-callout__label"> <span role="text">
           <span class="nhsuk-u-visually-hidden">Important: </span>
-            Invoice not approved
+            2 charges not approved 
           </span> 
         </h3>
-        <p>This invoice has 2 charges which need to be resolved manually before it can be approved.</p>
+        <p>This invoice has 2 outstanding charges which need to be approved or disputed manually.</p>
       </div>
 
       <h2 class="nhsuk-heading-s">
@@ -47,6 +47,7 @@
             <th scope="col" class="nhsuk-table__header">Invoice ID</th>
             <th scope="col" class="nhsuk-table__header">Trust</th>
             <th scope="col" class="nhsuk-table__header">Date uploaded by trust</th>
+            <th scope="col" class="nhsuk-table__header">Financial month</th>
             <th scope="col" class="nhsuk-table__header">Number of charges</th>
             <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Total value (£)</th>
           </tr>
@@ -56,7 +57,8 @@
             <td class="nhsuk-table__cell">​100425002</td>
             <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
             <td class="nhsuk-table__cell ">10/06/25</td>
-            <td class="nhsuk-table__cell ">3</td>
+            <td class="nhsuk-table__cell ">April 2025</td>
+            <td class="nhsuk-table__cell nhsuk-table__cell--numeric">3</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">4916.00</td>
 
           </tr>
@@ -90,20 +92,20 @@
           </li>
           <li class="nhsuk-tabs__list-item">
             <a class="nhsuk-tabs__tab" href="#approved-items">
-              Accepted charges (1)
+              Approved charges (1)
             </a>
           </li>
         </ul>
         <div class="nhsuk-tabs__panel" id="flags">
-          <p>The following charges have raised one or more flags which prevent them from being automatically accepted. You must manually accept or dispute each charge in order to approve the invoice.</p>      
+          <p>The following charges have raised one or more flags which prevent them from being automatically approved. You must manually approve or dispute each charge.</p>      
 
-          <p>A full list of the types of flags and the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a></p>
+          <p>A full list of the types of flags and the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a><div class=""></div></p>
           {% from 'details/macro.njk' import details %}
           {{ details({
             text: "Search or filter this table",
             html: "
               <div class='nhsuk-form-group'>
-                <p class='margin-btm-4'>Search for psuedonomised patient ID, drug name or charge reference ID:</p>
+                <p class='margin-btm-4'>Search for psuedonomised patient ID, form code, drug name or charge reference ID:</p>
                 <div class='nhsuk-header__search' id='search-charges-container'>
                   <div class='nhsuk-header__search-wrap' id='wrap-search'>
                     <form class='nhsuk-header__search-form' id='search' action=' ' method='get' role='search'>
@@ -150,7 +152,7 @@
           }) }}
 
           <div class="nhsuk-button-group">
-            <a class="nhsuk-button nhsuk-button--secondary" href="#">Accept all selected (1)</a>
+            <a class="nhsuk-button nhsuk-button--secondary" href="#">Approve all selected (1)</a>
             <a class="nhsuk-button nhsuk-button--secondary" href="#">Dispute all selected (1)</a>
 
           </div>
@@ -161,8 +163,8 @@
                 <tr class="nhsuk-table__row">
                   <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Pseudonomised patient ID</th>
                   <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Invoiced drug</th>
+                  <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Form code</th>
                   <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Treatment administered date</th>
-                  <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Treatment start date</th>
                   <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Highest flag</th>
                   <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Other flags</th>
                   <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Details</th>
@@ -173,7 +175,7 @@
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">icos-asda-noij</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">Infliximab</td>
-                  <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/24</td>
+                  <td class="nhsuk-table__cell nhsuk-u-font-size-16">M4C – NHS England V1.4 </td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">05/06/24</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">Old year debit</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">1</td>
@@ -190,8 +192,8 @@
                 <tr class="nhsuk-table__row">
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">sidu-vsdi-poas</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">Dupilumab</td>
+                  <td class="nhsuk-table__cell nhsuk-u-font-size-16">BA2 – NHS England V1.1 </td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">03/02/25</td>
-                  <td class="nhsuk-table__cell nhsuk-u-font-size-16">12/06/25</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">Previous charge in dispute</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">0</td>
                   <td class="nhsuk-table__cell nhsuk-u-font-size-16">
@@ -218,6 +220,57 @@
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="approved-items">
           <p>The following charges did not raise any flags and have therefore been tagged as "approved". You may override this by choosing to dispute individual charges.</p>      
 
+          {% from 'details/macro.njk' import details %}
+          {{ details({
+            text: "Search or filter this table",
+            html: "
+              <div class='nhsuk-form-group'>
+                <p class='margin-btm-4'>Search for psuedonomised patient ID, form code, drug name or charge reference ID:</p>
+                <div class='nhsuk-header__search' id='search-charges-container'>
+                  <div class='nhsuk-header__search-wrap' id='wrap-search'>
+                    <form class='nhsuk-header__search-form' id='search' action=' ' method='get' role='search'>
+                      <input class='nhsuk-search__input' id='search-charges-field' name='search-field' type='search' placeholder='Search' autocomplete='off'>
+                      <button class='nhsuk-search__submit' id='search-charges-btn' type='submit'>
+                        <svg class='nhsuk-icon nhsuk-icon__search' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' aria-hidden='true' focusable='false'>
+                          <path d='M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z'></path>
+                        </svg>
+                        <span class='nhsuk-u-visually-hidden'></span>
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <br>
+                <label class='nhsuk-label' for='select-1'>
+                  Show only charges which have the flag:
+                </label>
+                <select class='nhsuk-select' id='select-1' name='select-1'>
+                  <option value='1' selected>All</option>
+                  <option value='2'>Old year debit</option>
+                  <option value='3'>Drug not matching</option>
+                  <option value='4'>Treatment gap</option>
+                  <option value='5'>Previous charge in dispute</option>
+                  <option value='6'>Days 31 After Approval</option>
+                  <option value='7'>Orbis Request</option>
+                  <option value='8'>Two Days before Approval</option>
+                  <option value='9'>Check for Form B</option>
+                  <option value='10'>Form A Check</option>
+                  <option value='11'>Future Date</option>
+                  <option value='12'>Treatment Stopped</option>
+                  <option value='13'>Treatment Not Started</option>
+                  <option value='14'>Admin Check</option>
+                  <option value='15'>CAR-T Form A Flag</option>
+                  <option value='16'>CAR-T Forms</option>
+                  <option value='17'>Pembrolizumab 25 months</option>
+                  <option value='18'>Ipilimumab Four Cycles</option>
+                  <option value='19'>Form B Check</option>
+                  <option value='20'>After Treatment Break Declined</option>
+                  <option value='21'>Old Year Credit</option>
+                  <option value='22'>Charge Against Wrong Id</option>
+                </select>
+              </div>
+            "
+          }) }}
+
           <div class="nhsuk-button-group">
             <a class="nhsuk-button nhsuk-button--secondary" href="#">Dispute all selected (1)</a>
           </div>
@@ -227,7 +280,7 @@
               <tr class="nhsuk-table__row">
                 <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Pseudonomised patient ID</th>
                 <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Invoiced drug</th>
-                <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Charge accepted date</th>
+                <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Charge approved date</th>
                 <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Details</th>
                 <th class="nhsuk-table__header nhsuk-u-font-size-16" scope="col">Select</th>
               </tr>

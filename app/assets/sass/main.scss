@@ -107,3 +107,18 @@
 .margin-btm-4 {
   margin-bottom: 4px;
 }
+
+/* unpaid invoice filters */ 
+.float-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Adjust spacing between dropdowns */
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.float-filter-container .nhsuk-form-group {
+  margin-bottom: 0; /* Prevents extra spacing below each item */
+  flex: 1 1 auto;   /* Allow wrapping if needed on smaller screens */
+  min-width: 180px; /* Ensures dropdowns don't get too narrow */
+}
