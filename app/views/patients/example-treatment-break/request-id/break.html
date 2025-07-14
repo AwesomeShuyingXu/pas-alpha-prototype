@@ -30,21 +30,35 @@
       <!-- Styles and components can be found at https://service-manual.nhs.uk/design-system -->
 
       <h1 class="nhsuk-heading-xl">
-        Complete treatment break request for request <a href="">asji-aios-aosl</a>
+        Submit a treatment break request for initial request <a href="">asji-aios-aosl</a>
       </h1>
       <hr>
   <form method="post" action="/patients/example-id">
 
     <h2 class="nhsuk-heading-s">Patient details</h2>
-      
-    <div class="nhsuk-form-group">
-      <label class="nhsuk-label" for="hospital-number">Hospital number</label>
-      <div class="nhsuk-hint" id="nhs-hint">
-        A unique patient identifier used within this hospital or NHS Trust. Enter it exactly as provided on the patient’s documentation.
-      </div>
-
-      <input class="nhsuk-input nhsuk-input--width-10" id="hospital-number" name="hospital-number" type="text" value="12939292">
-    </div>
+    <table class="nhsuk-table nhsuk-u-margin-bottom-3">
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">NHS number</td>
+          <td class="nhsuk-table__cell">4857773456</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">First name</td>
+          <td class="nhsuk-table__cell">Jeremy</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">Surname</td>
+          <td class="nhsuk-table__cell">Dalston</td>
+        </tr>
+      </tbody>
+    </table>
+      {{ details({
+        text: "What should I do if these details are incorrect?",
+        html: "
+          <p>This page shows the demographic details linked to this patient's NHS number.</p>
+          <p>If anything looks incorrect, you can update these details through the <a href='https://digital.nhs.uk/services/personal-demographics-service'>Personal Demographics Service (PDS)</a>  or contact your trust administration.</p>
+        "
+      }) }}
 
     <br>
     <br>
@@ -55,6 +69,10 @@
         <tr class="nhsuk-table__row">
           <td class="nhsuk-table__cell"><b>Drug</b></td>
           <td class="nhsuk-table__cell">Pembrolizumab</td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell"><b>Initial form description</b></td>
+          <td class="nhsuk-table__cell">M4C – NHS England V1.5 – Initial Funding Application – Pembrolizumab for treating non-small-cell lung cancer (NSCLC) in adults whose tumours express PD-L1 and who have not had prior systemic therapy (in relation to TA531)</td>
         </tr>
       </tbody>
     </table>

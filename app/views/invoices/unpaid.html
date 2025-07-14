@@ -42,18 +42,58 @@
           </span>
         </summary>
         <div class="nhsuk-details__text">
-          <div class="nhsuk-form-group">
-            <h2 class="nhsuk-heading-s">Filter by</h2>
-            <label class="nhsuk-label" for="trust-name">
-              Trust
-            </label>
-            <div id="trust-autocomplete-container" class="aa-input-container"></div>
-            <input type="hidden" name="trust-name" id="trust-autocomplete">
-            <br>
-            <button class="nhsuk-button" type="submit">
-              Apply
-            </button>
+          <h2 class="nhsuk-heading-s">Filter by</h2>
+            <!-- Trust filter -->
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="trust-name">Trust</label>
+              <div id="trust-autocomplete-container" class="aa-input-container"></div>
+              <input type="hidden" name="trust-name" id="trust-autocomplete">
+            </div>
+          <div class="float-filter-container">
+
+            <!-- Financial year filter -->
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="financial-year">Financial year</label>
+              <select class="nhsuk-select" id="financial-year" name="financial-year">
+                <option value="">Select a year</option>
+                <option value="2021-22">2021–22</option>
+                <option value="2022-23">2022–23</option>
+                <option value="2023-24">2023–24</option>
+              </select>
+            </div>
+
+            <!-- Region filter -->
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="region">Region</label>
+              <select class="nhsuk-select" id="region" name="region">
+                <option value="">Select a region</option>
+                <option value="North East">North East</option>
+                <option value="North West">North West</option>
+                <option value="Midlands">Midlands</option>
+                <option value="London">London</option>
+                <option value="South East">South East</option>
+                <option value="South West">South West</option>
+              </select>
+            </div>
+
+            <!-- Value filter -->
+            <div class="nhsuk-form-group">
+              <label class="nhsuk-label" for="value-band">Value</label>
+              <select class="nhsuk-select" id="value-band" name="value-band">
+                <option value="">Select a value band</option>
+                <option value="0-10000">£0–10,000</option>
+                <option value="10001-50000">£10,001–50,000</option>
+                <option value="50001+">£50,001 and above</option>
+              </select>
+            </div>
+
           </div>
+          <br>
+          <!-- Submit button -->
+          <div class="nhsuk-form-group">
+            <button class="nhsuk-button" type="submit">Apply</button>
+          </div>
+
         </div>
       </details>
 
@@ -64,6 +104,7 @@
             <th scope="col" class="nhsuk-table__header">Invoice ID</th>
             <th scope="col" class="nhsuk-table__header">Trust</th>
             <th scope="col" class="nhsuk-table__header">Date uploaded by trust</th>
+            <th scope="col" class="nhsuk-table__header">Financial month</th>
             <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Total value (£)</th>
             <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Number of outstanding actions</th>
           </tr>
@@ -73,6 +114,7 @@
             <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​100425002</a></th>
             <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
             <td class="nhsuk-table__cell ">10/06/25</td>
+            <td class="nhsuk-table__cell ">April 2025</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">4916.00</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">2</td>
 
@@ -81,6 +123,7 @@
             <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">070425001​</a></th>
             <td class="nhsuk-table__cel">Oxleas NHS Foundation Trust</td>
             <td class="nhsuk-table__cell">07/04/25</td>
+            <td class="nhsuk-table__cell ">March 2025</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">109342.32</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">31</td>          
           </tr>
@@ -88,6 +131,7 @@
             <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​050325002</a></th>
             <td class="nhsuk-table__cell">Example NHS Foundation Trust​</td>
             <td class="nhsuk-table__cell">05/03/25</td>
+            <td class="nhsuk-table__cell ">Jan 2025</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">301232.12</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">27</td>
           </tr>
