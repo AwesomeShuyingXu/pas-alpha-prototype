@@ -8,12 +8,19 @@
 <!-- For adding a breadcrumb or back link -->
 <!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
 {% block beforeContent %}
-  <div class="nhsuk-back-link"> <a class="nhsuk-back-link__link" href="/invoices/unpaid">
-      <svg class="nhsuk-icon nhsuk-icon__chevron-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="24" width="24">
-        <path d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"></path>
-      </svg>
-      Unpaid invoices</a>
-  </div>
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <ol class="nhsuk-breadcrumb__list">
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/invoices">Manage invoices</a></li>
+    <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="/invoices/unpaid">Unpaid invoices</a></li>
+     <li class="nhsuk-breadcrumb__item">Invoice 100425002</li>
+  </ol>
+  <p class="nhsuk-breadcrumb__back">
+    <a class="nhsuk-breadcrumb__backlink" href="#">
+      <span class="nhsuk-u-visually-hidden">Back to &nbsp;</span>
+      Unpaid invoices
+    </a>
+  </p>
+</nav>
 {% endblock %}
 
 <!-- For adding page content -->
@@ -99,7 +106,7 @@
         <div class="nhsuk-tabs__panel" id="flags">
           <p>The following charges have raised one or more flags which prevent them from being automatically approved. You must manually approve or dispute each charge.</p>      
 
-          <p>A full list of the types of flags and the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a><div class=""></div></p>
+          <p>A full list of the types of flags and the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a>.</p>
           {% from 'details/macro.njk' import details %}
           {{ details({
             text: "Search or filter this table",
@@ -212,10 +219,10 @@
 
         </div>
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="unknown-patients">
-          <p>There are no unknown patients in this invoice</p>
+          <p>There are no unknown patients in this invoice.</p>
         </div>
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="unmatched-patients">
-          <p>There are no unmatched patients in this invoice</p>
+          <p>There are no unmatched patients in this invoice.</p>
         </div>
         <div class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden" id="approved-items">
           <p>The following charges did not raise any flags and have therefore been tagged as "approved". You may override this by choosing to dispute individual charges.</p>      
