@@ -64,6 +64,33 @@
             </div>
           <div class="float-filter-container">
 
+           <!--Invoice ID filter-->
+          <div class="nhsuk-form-group">
+           <label class="nhsuk-label" for="invoice-id">Invoice ID</label>
+            <div id="invoice-id-autocomplete-container" class="aa-input-container"></div>
+          <input type="hidden" name="invoice-id" id="invoice-id-autocomplete">
+          </div>
+
+          <!-- Financial month filter -->
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="financial-month">Financial month</label>
+            <select class="nhsuk-select" id="financial-month" name="financial-month">
+              <option value="">Select a month</option>
+              <option value="Jan">January</option>
+              <option value="Feb">February</option>
+              <option value="Mar">March</option>
+              <option value="Apr">April</option>
+              <option value="May">May</option>
+              <option value="Jun">June</option>
+              <option value="Jul">July</option>
+              <option value="Aug">August</option>
+              <option value="Sep">September</option>
+              <option value="Oct">October</option>
+              <option value="Nov">November</option>
+              <option value="Dec">December</option>
+            </select>
+          </div>
+
             <!-- Financial year filter -->
             <div class="nhsuk-form-group">
               <label class="nhsuk-label" for="financial-year">Financial year</label>
@@ -109,14 +136,17 @@
         </div>
       </details>
 
+</details>
 
+<div style="overflow-x:auto"> <!-- To keep the table on one page  -->
       <table class="nhsuk-table">
         <thead class="nhsuk-table__head">
           <tr>
             <th scope="col" class="nhsuk-table__header">Invoice ID</th>
             <th scope="col" class="nhsuk-table__header">Trust</th>
-            <th scope="col" class="nhsuk-table__header">Date uploaded by trust</th>
-            <th scope="col" class="nhsuk-table__header">Financial month</th>
+            <th scope="col" class="nhsuk-table__header">Date uploaded</th>
+            <th scope="col" class="nhsuk-table__header">Financial month</th> <!-- Added column -->
+            <th scope="col" class="nhsuk-table__header">Financial year</th> 
             <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Total value (£)</th>
             <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Number of outstanding actions</th>
           </tr>
@@ -126,7 +156,8 @@
             <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​100425002</a></th>
             <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
             <td class="nhsuk-table__cell ">10/06/25</td>
-            <td class="nhsuk-table__cell ">April 2025</td>
+            <td class="nhsuk-table__cell ">April</td>
+            <td class="nhsuk-table__cell ">2025–26</td> <!-- Added cell -->
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">4916.00</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">2</td>
 
@@ -135,7 +166,8 @@
             <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">070425001​</a></th>
             <td class="nhsuk-table__cel">Oxleas NHS Foundation Trust</td>
             <td class="nhsuk-table__cell">07/04/25</td>
-            <td class="nhsuk-table__cell ">March 2025</td>
+            <td class="nhsuk-table__cell ">March</td>
+            <td class="nhsuk-table__cell ">2025–26</td> <!-- Added cell -->
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">109342.32</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">31</td>          
           </tr>
@@ -143,12 +175,14 @@
             <th scope="row" class="nhsuk-table__header"><a href="/invoices/example-invoice">​050325002</a></th>
             <td class="nhsuk-table__cell">Example NHS Foundation Trust​</td>
             <td class="nhsuk-table__cell">05/03/25</td>
-            <td class="nhsuk-table__cell ">Jan 2025</td>
+            <td class="nhsuk-table__cell ">Jan</td>
+            <td class="nhsuk-table__cell ">2024–25</td> <!-- Added cell -->
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">301232.12</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">27</td>
           </tr>
         </tbody>
       </table>
+    </div>
 
 
 
@@ -188,9 +222,8 @@
       "Portsmouth Hospitals University NHS Trust",
       "North Tees and Hartlepool NHS Foundation Trust",
       "Gloucestershire Hospitals NHS Foundation Trust"
-    ];
-
-
+      ];
+    
     accessibleAutocomplete({
       element: document.querySelector('#trust-autocomplete-container'),
       id: 'trust-autocomplete',
@@ -201,6 +234,23 @@
       confirmOnBlur: false,
       displayMenu: 'overlay'
     });
+
+    const invoiceIdList = [
+  "100425002",
+  "070425001",
+  "050325002"
+    ];
+
+    accessibleAutocomplete({
+  element: document.querySelector('#invoice-id-autocomplete-container'),
+  id: 'invoice-id-autocomplete',
+  name: 'invoice-id',
+  source: invoiceIdList,
+  minLength: 1,
+  autoselect: true,
+  confirmOnBlur: false,
+  displayMenu: 'overlay'
+});
 </script>
 
 {% endblock %}

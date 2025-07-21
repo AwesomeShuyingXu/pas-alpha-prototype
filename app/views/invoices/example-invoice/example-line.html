@@ -34,6 +34,15 @@
         Invoice charge INV-220625001-L1
       </h1>
 
+       <h2 class="nhsuk-heading-m">This charge has raised the following flags</h2>
+      <ul class="nhsuk-list nhsuk-list--bullet">
+        <li><b>Old year debit</b> – The date of the charge is from a previous year</li>
+        <li><b>Drug not matching</b> – The drug on the charge differs from that in the matching request on the system</li>
+      </ul>
+      <p>A full list of the types of flags and more detail about the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a>.</p>
+
+      <br>
+
       <table class="nhsuk-table">
         <tbody class="nhsuk-table__body">
           <tr class="nhsuk-table__row">
@@ -87,15 +96,6 @@
         </tbody>
       </table>
 
-      <h2 class="nhsuk-heading-m">This charge has raised the following flags</h2>
-      <ul class="nhsuk-list nhsuk-list--bullet">
-        <li><b>Old year debit</b> – The date of the charge is from a previous year</li>
-        <li><b>Drug not matching</b> – The drug on the charge differs from that in the matching request on the system</li>
-      </ul>
-      <p>A full list of the types of flags and more detail about the criteria which trigger them is available on our <a target="_blank" href="#">flag definitions page</a>.</p>
-
-      <br>
-
 
       <div class="nhsuk-button-group">
         <a class="nhsuk-button nhsuk-button--secondary" href="#">Accept charge</a>
@@ -103,4 +103,25 @@
       </div>
     </div>
   </div>
+
+      <h2 class="nhsuk-heading-m" style="margin-top:2em;">Charge history</h2>
+      <table class="nhsuk-table">
+        <thead class="nhsuk-table__head">
+          <tr class="nhsuk-table__row">
+            <th class="nhsuk-table__header">Date</th>
+            <th class="nhsuk-table__header">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">15/06/25</td>
+            <td class="nhsuk-table__cell">Charge approved by Joe Bloggs</td>
+          </tr>
+          <tr class="nhsuk-table__row">
+            <td class="nhsuk-table__cell">10/06/25</td>
+            <td class="nhsuk-table__cell">Charge flagged: Old year debit, Drug not matching</td>
+          </tr>
+        </tbody>
+      </table>
+
 {% endblock %}
