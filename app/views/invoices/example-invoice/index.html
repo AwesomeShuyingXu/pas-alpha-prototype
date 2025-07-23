@@ -55,6 +55,7 @@
             <th scope="col" class="nhsuk-table__header">Trust</th>
             <th scope="col" class="nhsuk-table__header">Date uploaded</th>
             <th scope="col" class="nhsuk-table__header">Financial month</th>
+            <th scope="col" class="nhsuk-table__header">Financial year</th>
             <th scope="col" class="nhsuk-table__header">Number of charges</th>
             <th scope="col" class="nhsuk-table__header nhsuk-table__header--numeric">Total value (£)</th>
           </tr>
@@ -64,7 +65,8 @@
             <td class="nhsuk-table__cell">​100425002</td>
             <td class="nhsuk-table__cell">Example NHS Foundation Trust</td>
             <td class="nhsuk-table__cell ">10/06/25</td>
-            <td class="nhsuk-table__cell ">April 2025</td>
+            <td class="nhsuk-table__cell ">April</td>
+            <td class="nhsuk-table__cell ">2025-26</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">3</td>
             <td class="nhsuk-table__cell nhsuk-table__cell--numeric">4916.00</td>
 
@@ -112,7 +114,7 @@
             text: "Search or filter this table",
             html: "
               <div class='nhsuk-form-group'>
-                <p class='margin-btm-4'>Search for request reference ID, form code or drug name:</p>
+                <p class='margin-btm-4'>Search for patient ID, request reference ID, form code or drug name:</p>
                 <div class='nhsuk-header__search' id='search-charges-container'>
                   <div class='nhsuk-header__search-wrap' id='wrap-search'>
                     <form class='nhsuk-header__search-form' id='search' action=' ' method='get' role='search'>
